@@ -6,18 +6,22 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "operation_analyse")
-public class OperationAnalyse {
+@Table(name = "dossier_medical")
+public class DossierMedical {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String description;
-    @Column(name = "date_operation")
-    private Date dateOperation;
-    private String resultat;
+    @Column(name = "date_creation")
+    private Date dateCreaction;
+    @Column(name ="code_access_patient")
+    private String codeAccessPatient;
+
+    @OneToMany
+    private List<FicheSoin> ficheSoins;
 }
