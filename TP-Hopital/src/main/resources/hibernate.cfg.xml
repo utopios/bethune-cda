@@ -9,6 +9,8 @@
         <mapping class="com.example.tphopital.entity.FicheSoin" />
         <mapping class="com.example.tphopital.entity.FichePayment" />
         <mapping class="com.example.tphopital.entity.FicheConsultation" />
+        <mapping class="com.example.tphopital.entity.Patient" />
+        <mapping class="com.example.tphopital.entity.DossierMedical" />
     </session-factory>
 </hibernate-configuration>
 
