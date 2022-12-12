@@ -5,6 +5,7 @@ import java.io.*;
 import com.example.tphopital.entity.Patient;
 import com.example.tphopital.entity.Prescription;
 import com.example.tphopital.repository.impl.PatientRepository;
+import com.example.tphopital.service.PatientService;
 import com.example.tphopital.util.HibernateSession;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -23,7 +24,8 @@ public class HelloServlet extends HttpServlet {
         patient.setNss("1 87 00000000000");
         patient.setNom("abadi");
         patient.setPrenom("Ihab");
-        new PatientRepository().create(patient);
+        //new PatientRepository().create(patient);
+        new PatientService(new PatientRepository()).add(patient);
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
