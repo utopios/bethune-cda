@@ -6,6 +6,9 @@ import java.util.List;
 
 public class PatientRepository extends BaseRepository<Patient> {
 
+    public PatientRepository() {
+        super();
+    }
     @Override
     public boolean update(Patient element) {
         return false;

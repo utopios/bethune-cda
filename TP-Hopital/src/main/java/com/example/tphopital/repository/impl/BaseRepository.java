@@ -10,7 +10,7 @@ public abstract class BaseRepository<T> implements IRepository<T> {
 
     protected Transaction transaction;
     protected BaseRepository() {
-        transaction = HibernateSession.getInstance().getTransaction();
+        transaction = HibernateSession.getInstance().beginTransaction();
     }
     @Override
     public boolean create(T element) {
