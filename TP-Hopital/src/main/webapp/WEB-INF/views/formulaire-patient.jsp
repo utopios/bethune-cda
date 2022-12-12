@@ -11,27 +11,32 @@
 <body>
 <jsp:include page="../includes/header.jsp" />
 <div>
-    <form action="/patient/formulaire" method="post" class="container">
+    <c:if test="${message != ''}">
+        <div class="row alert alert-danger">
+            ${message}
+        </div>
+    </c:if>
+    <form action="${pageContext.request.contextPath}/patient/formulaire" method="post" class="container">
         <div class="row justify-content-center m-1">
-            <input type="text" class="form-control p-1" name="nss" placeholder="Numéro de sécurité sociale" />
+            <input type="text" class="form-control p-1" value="${nss != null ? nss : ''}" name="nss" placeholder="Numéro de sécurité sociale" />
         </div>
         <div class="row justify-content-center m-1">
-            <input type="text" class="form-control p-1" name="nom" placeholder="Nom " />
+            <input type="text" class="form-control p-1" value="${nom != null ? nom : ''}" name="nom" placeholder="Nom " />
         </div>
         <div class="row justify-content-center m-1">
-            <input type="text" class="form-control p-1" name="prenom" placeholder="Prénom " />
+            <input type="text" class="form-control p-1" value="${prenom != null ? prenom : ''}" name="prenom" placeholder="Prénom " />
         </div>
         <div class="row justify-content-center m-1">
-            <input type="date" class="form-control p-1" name="dateNaissance" placeholder="Date de naissance" />
+            <input type="date" class="form-control p-1" value="${dateNaissance != null ? dateNaissance : ''}" name="dateNaissance" placeholder="Date de naissance" />
         </div>
         <div class="row justify-content-center m-1">
-            <select name="sexe"><option></option><option>Homme</option> <option>Femme</option></select>
+            <select name="sexe" value="${sexe != null ? sexe : ''}"><option></option><option>Homme</option> <option>Femme</option></select>
         </div>
         <div class="row justify-content-center m-1">
-            <input type="text" class="form-control p-1" name="adresse" placeholder="Adresse" />
+            <input type="text" class="form-control p-1" value="${adresse != null ? adresse : ''}" name="adresse" placeholder="Adresse" />
         </div>
         <div class="row justify-content-center m-1">
-            <input type="number" class="form-control p-1" name="telephone" placeholder="Téléphone" />
+            <input type="number" class="form-control p-1" value="${telephone != null ? telephone : ''}" name="telephone" placeholder="Téléphone" />
         </div>
         <div class="row justify-content-center m-1">
             <button class="btn btn-success col" type="submit">Valider</button>

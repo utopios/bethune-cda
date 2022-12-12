@@ -20,12 +20,12 @@ public class HelloServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-        Patient patient = new Patient();
+        /*Patient patient = new Patient();
         patient.setNss("1 87 00000000000");
         patient.setNom("abadi");
         patient.setPrenom("Ihab");
         //new PatientRepository().create(patient);
-        new PatientService(new PatientRepository()).add(patient);
+        new PatientService(new PatientRepository()).add(patient);*/
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");

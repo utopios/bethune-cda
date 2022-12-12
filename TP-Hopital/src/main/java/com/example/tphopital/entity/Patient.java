@@ -1,5 +1,7 @@
 package com.example.tphopital.entity;
 
+import com.example.tphopital.exception.StringFormatException;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,4 +32,10 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "dossier_medical_id")
     DossierMedical dossierMedical;
+
+    public void setNom(String nom) throws StringFormatException {
+        if(nom != null && nom.length() > 2)
+            this.nom = nom;
+        throw new StringFormatException();
+    }
 }
