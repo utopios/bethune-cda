@@ -6,12 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <jsp:include page="../includes/head.jsp" />
 <body>
 <jsp:include page="../includes/header.jsp" />
 <div>
-    <c:if test="${message != ''}">
+    <c:if test="${not empty message}">
         <div class="row alert alert-danger">
             ${message}
         </div>

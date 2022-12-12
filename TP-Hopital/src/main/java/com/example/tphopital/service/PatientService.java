@@ -26,7 +26,8 @@ public class PatientService {
         patient.setAdresse(adresse);
         patient.setSexe(sexe.charAt(0));
         patient.setNumeroTelephone(telephone);
-        Date dateN = new SimpleDateFormat("dd/mm/yyyy").parse(dateNaissance);
+        Date dateN = new SimpleDateFormat("yyyy-mm-dd").parse(dateNaissance);
+        patient.setDateNaissance(dateN);
         return _patientRepository.create(patient);
     }
 }

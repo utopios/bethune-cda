@@ -36,6 +36,7 @@ public class Patient {
     public void setNom(String nom) throws StringFormatException {
         if(nom != null && nom.length() > 2)
             this.nom = nom;
-        throw new StringFormatException();
+        else
+            throw new StringFormatException();
     }
 }
