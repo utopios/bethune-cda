@@ -4,6 +4,8 @@
 <hibernate-configuration>
     <session-factory>
         <mapping class="com.example.tphopital.entity.Prescription" />
+        <mapping class="com.example.tphopital.entity.Consultation" />
+        <mapping class="com.example.tphopital.entity.OperationAnalyse" />
     </session-factory>
 </hibernate-configuration>
 
