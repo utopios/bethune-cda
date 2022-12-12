@@ -6,6 +6,9 @@
         <mapping class="com.example.tphopital.entity.Prescription" />
         <mapping class="com.example.tphopital.entity.Consultation" />
         <mapping class="com.example.tphopital.entity.OperationAnalyse" />
+        <mapping class="com.example.tphopital.entity.FicheSoin" />
+        <mapping class="com.example.tphopital.entity.FichePayment" />
+        <mapping class="com.example.tphopital.entity.FicheConsultation" />
     </session-factory>
 </hibernate-configuration>
 
