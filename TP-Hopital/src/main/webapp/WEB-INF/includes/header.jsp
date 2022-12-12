@@ -5,6 +5,7 @@
   Time: 13:51
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,7 +20,8 @@
                     <a class="nav-link" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="patient/formulaire">Ajouter un formulaire</a>
+                    <%--<c:url value="${pageContext.request.contextPath}/patient/formulaire">Ajouter un patient</c:url>--%>
+                    <a href="${pageContext.request.contextPath}/patient/formulaire">Ajouter un patient</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
