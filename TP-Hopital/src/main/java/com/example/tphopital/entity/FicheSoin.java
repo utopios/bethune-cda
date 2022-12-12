@@ -2,17 +2,16 @@ package com.example.tphopital.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class FicheSoin {
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private Date dateCreation;
     private String agentCreateur;
