@@ -4,6 +4,7 @@ import com.example.tphopital.entity.Patient;
 import com.example.tphopital.exception.StringFormatException;
 import com.example.tphopital.repository.impl.BaseRepository;
 import com.example.tphopital.repository.impl.PatientRepository;
+import com.example.tphopital.util.HibernateSession;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ public class PatientService {
 
     public PatientService(BaseRepository<Patient> patientBaseRepository) {
         _patientRepository = patientBaseRepository;
+        _patientRepository.setTransaction(HibernateSession.getInstance().beginTransaction());
     }
 
     public boolean add(String nom, String prenom, String telephone, String adresse, String nss, String dateNaissance, String sexe) throws StringFormatException, ParseException {

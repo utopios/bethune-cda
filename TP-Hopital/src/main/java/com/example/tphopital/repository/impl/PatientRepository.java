@@ -1,6 +1,7 @@
 package com.example.tphopital.repository.impl;
 
 import com.example.tphopital.entity.Patient;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -8,6 +9,9 @@ public class PatientRepository extends BaseRepository<Patient> {
 
     public PatientRepository() {
         super();
+    }
+    public PatientRepository(Transaction transaction) {
+        super(transaction);
     }
     @Override
     public boolean update(Patient element) {
