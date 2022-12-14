@@ -71,7 +71,7 @@ public class ShopTest {
     }
 
     @Test
-    void estUpdateShouldDecreaseQualityTwiceWhenTypeIsLaitier() throws Exception {
+    void testUpdateShouldDecreaseQualityTwiceWhenTypeIsLaitier() throws Exception {
         //A
         product = new Product("laitier", "yaourt", 10, 10);
         shop.update(product);
