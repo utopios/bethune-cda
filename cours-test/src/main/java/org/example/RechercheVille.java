@@ -17,11 +17,11 @@ public class RechercheVille {
     }
 
     public List<String> rechercher(String mot) throws Exception {
-        if(!mot.equals("*") && mot.length() < 2) {
-            throw new NotFoundException();
-        }
-        else if(mot.equals("*")) {
+        if(mot.equals("*")) {
             return villes;
+        }
+        if(mot.length() < 2) {
+            throw new NotFoundException();
         }
         else {
             List<String> result = new ArrayList<>();
