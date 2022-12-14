@@ -16,3 +16,35 @@ Voici les règles de décrémentation :
 -	Les produits laitiers se dégradent en qualité deux fois plus vite que les produits normaux
 
 Réaliser la méthode update en utilisant les TDD.
+
+## Help
+
+### Etape 1 ***Structure des classes***
+
+#### Les classes
+
+1. ***Product***
+
+```
+public class Product {
+    private String type;
+    private String name;
+    private int sellIn;
+    private int quality;
+}
+```
+2. ***Shop***
+
+```
+public class Shop {
+    private List<Product> products;
+    
+    public void update(Product product) throws Exception {
+        throw new Exception("Not implemented");
+    }
+}
+```
+
+### Etape 2 ***Création des tests dans une (ou plusieurs) classes de tests***
+
+### Etape 3 ***Implémenter la méthode update pour répondre au tests***
