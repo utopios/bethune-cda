@@ -52,4 +52,29 @@ public class ShopTest {
             shop.update(product);
         });
     }
+
+    @Test
+    void testUpdateShouldRaiseExceptionWhenQualityIsMoreThen50() throws Exception {
+        //A
+        product = new Product("cat 1", "test", 0, 50);
+        Assertions.assertThrowsExactly(QualityException.class, () -> {
+            shop.update(product);
+        });
+    }
+
+    @Test
+    void testUpdateShouldIncreaseQualityWhenProductIsBrie() throws Exception {
+        //A
+        product = new Product("laitier", "brie vieilli", 10, 10);
+        shop.update(product);
+        Assertions.assertEquals(11, product.getQuality());
+    }
+
+    @Test
+    void estUpdateShouldDecreaseQualityTwiceWhenTypeIsLaitier() throws Exception {
+        //A
+        product = new Product("laitier", "yaourt", 10, 10);
+        shop.update(product);
+        Assertions.assertEquals(5, product.getQuality());
+    }
 }
