@@ -4,9 +4,9 @@ public class Product {
     private String type;
     private String name;
     private int sellIn;
-    private int quality;
+    private double quality;
 
-    public Product(String type, String name, int sellIn, int quality) {
+    public Product(String type, String name, int sellIn, double quality) {
         this.type = type;
         this.name = name;
         this.sellIn = sellIn;
@@ -37,11 +37,11 @@ public class Product {
         this.sellIn = sellIn;
     }
 
-    public int getQuality() {
+    public double getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    public void setQuality(double quality) {
         this.quality = quality;
     }
 }
