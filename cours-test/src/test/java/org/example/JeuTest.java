@@ -17,4 +17,10 @@ public class JeuTest {
     void testJouerWin() {
         Assertions.assertTrue(jeu.jouer());
     }
+
+    @Test
+    void testJouerNotWin() {
+        jeu = new Jeu(new FauxDeNotWin());
+        Assertions.assertFalse(jeu.jouer());
+    }
 }
