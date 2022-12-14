@@ -44,4 +44,25 @@ public class RechercheVilleTest {
         //Assert
         Assertions.assertEquals(Arrays.asList("Valence", "Vancouver"), villes);
     }
+
+
+    //Q4
+    @Test
+    void rechercherShouldBeListWhenMotContains2Chars() throws Exception {
+        //ACT
+        List<String> villes = rechercheVille.rechercher("eR");
+
+        //Assert
+        Assertions.assertEquals(Arrays.asList("Vancouver", "Amsterdam"), villes);
+    }
+
+    //Q5
+    @Test
+    void rechercherShouldBeAllCitiesWhenMotContainsAstrisk() throws Exception {
+        //ACT
+        List<String> villes = rechercheVille.rechercher("*");
+
+        //Assert
+        Assertions.assertEquals(Arrays.asList("Valence", "Vancouver","Amsterdam"), villes);
+    }
 }

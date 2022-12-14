@@ -17,13 +17,16 @@ public class RechercheVille {
     }
 
     public List<String> rechercher(String mot) throws Exception {
-        if(mot.length() < 2) {
+        if(!mot.equals("*") && mot.length() < 2) {
             throw new NotFoundException();
+        }
+        else if(mot.equals("*")) {
+            return villes;
         }
         else {
             List<String> result = new ArrayList<>();
             for(String v : villes) {
-                if(v.toLowerCase().startsWith(mot.toLowerCase())) {
+                if(v.toLowerCase().contains(mot.toLowerCase())) {
                     result.add(v);
                 }
             }
