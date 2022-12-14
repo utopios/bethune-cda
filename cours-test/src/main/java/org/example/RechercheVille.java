@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.exception.NotFoundException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RechercheVille {
@@ -19,6 +20,15 @@ public class RechercheVille {
         if(mot.length() < 2) {
             throw new NotFoundException();
         }
-        throw new Exception();
+        else {
+            List<String> result = new ArrayList<>();
+            for(String v : villes) {
+                if(v.toLowerCase().startsWith(mot.toLowerCase())) {
+                    result.add(v);
+                }
+            }
+            return result;
+        }
+
     }
 }
