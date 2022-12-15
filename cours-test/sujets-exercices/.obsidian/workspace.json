@@ -1,0 +1,145 @@
+{
+  "main": {
+    "id": "08510309e47aaa2f",
+    "type": "split",
+    "children": [
+      {
+        "id": "f1c91c12bb73cd81",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c6b709cdbd3f67ef",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "exercice7.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9889adb0c5d85935",
+    "type": "split",
+    "children": [
+      {
+        "id": "96ad79ab8ee7f705",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7938c7eb0ae7af1d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f68e63a1f2d4fea8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "692dc9ae6eb403ee",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e56d3b6b6987e6d1",
+    "type": "split",
+    "children": [
+      {
+        "id": "71ca39297278f785",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0b807657774c65ec",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "exercice7.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5a1a247c343e2851",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "exercice7.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "cc4595936623e697",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e34f0e4f7d6c37b6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "exercice7.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "c6b709cdbd3f67ef",
+  "lastOpenFiles": [
+    "exercice6.md",
+    "exercice7.md",
+    "exercice1.md"
+  ]
+}

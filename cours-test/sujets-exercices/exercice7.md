@@ -20,3 +20,41 @@ Les tests pour réaliser la classe Frame du jeu de bowling doivent couvrir les s
     - En cas de strike puis de lancer, le score est censé augmenter en accord avec le résultat
     - En cas de spare, il doit être possible de lancer une nouvelle fois au cours d’une série
     - En cas de spare puis de lancer, le score est censé augmenter en accord avec le résultat du lancer o En cas de lancers standards, il ne doit pas être possible de lancer plus de 4 fois
+
+
+
+## HELP
+
+### Structure des classes
+1. La classe ***Role***
+```
+public class Roll {
+  private int pins;
+}
+```
+2. La classe ***Frame***
+```
+public class Frame {
+  private int score;
+  private boolean _lastFrame;
+  private IGenerateur _generateur;
+  private List<Roll> rolls;
+  
+  public Frame(IGenerateur generateur, boolean lastFrame) {
+    _lastFrame = lastFrame;
+    _genrateur = generateur;
+  }
+  
+  public bool makeRoll() throws Exception {
+    throw new Exception();
+  }
+}
+```
+3. L'interface IGenerateur
+
+```
+public interface IGenerateur {
+  public int randomPin(int max);
+}
+
+```
