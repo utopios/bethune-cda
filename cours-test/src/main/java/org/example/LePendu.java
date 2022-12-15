@@ -57,6 +57,9 @@ public class LePendu {
     }
 
     public boolean testWin() throws Exception {
-        throw new Exception();
+        if(getNbEssai() > 0 && getMasque().equals(motATrouve)) {
+            return true;
+        }
+        return false;
     }
 }

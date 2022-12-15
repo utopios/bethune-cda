@@ -116,4 +116,37 @@ public class LePenduTest {
     }
 
     //endregion
+
+    //region test win
+    @Test
+    void testWinShouldBeTrueIfCorrectWord() throws Exception {
+        //act
+        lePendu.testChar('g');
+        lePendu.testChar('o');
+        lePendu.testChar('l');
+        lePendu.testChar('e');
+
+        //Assert
+        boolean res = lePendu.testWin();
+        Assertions.assertTrue(res);
+    }
+
+    @Test
+    void testWinShouldBeFalseIfCorrectWordAndNbEssaiIs0() throws Exception {
+        //act
+        lePendu = new LePendu(0);
+        lePendu.genererMasque(generateur);
+
+        //Assert
+        boolean res = lePendu.testWin();
+        Assertions.assertFalse(res);
+    }
+    @Test
+    void testWinShouldBeFalseIfWrongWord() throws Exception {
+        //Assert
+        boolean res = lePendu.testWin();
+        Assertions.assertFalse(res);
+    }
+
+    //endregion
 }
