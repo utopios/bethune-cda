@@ -15,7 +15,7 @@ public class JeuTest {
     private Jeu jeu;
 
     @Mock
-    private De de;
+    private IDe de;
     @BeforeEach
     void setUp() {
         //Methode 1
