@@ -12,6 +12,10 @@ public class LePendu {
         nbEssai = 10;
     }
 
+    public LePendu(int nb) {
+        nbEssai = nb;
+    }
+
     public int getNbEssai() {
         return nbEssai;
     }
@@ -33,7 +37,17 @@ public class LePendu {
     }
 
     public boolean testChar(char c) throws Exception {
-        if(motATrouve.contains(String.valueOf(c))) {
+        if(getNbEssai() > 0 && motATrouve.contains(String.valueOf(c))) {
+            String tmpMasque = "";
+            for(int i=0; i < motATrouve.length(); i++) {
+                if(motATrouve.charAt(i) == c) {
+                    tmpMasque += c;
+                }
+                else {
+                    tmpMasque += masque.charAt(i);
+                }
+            }
+            masque = tmpMasque;
             return true;
         }
         else {

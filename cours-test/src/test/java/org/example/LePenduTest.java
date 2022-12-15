@@ -66,9 +66,27 @@ public class LePenduTest {
     }
 
     @Test
+    void testTestCharShouldNotUpdateNbEssaiIfCorrectChar() throws Exception {
+        //Act
+        int oldNbEssai = lePendu.getNbEssai();
+        lePendu.testChar('g');
+        int res = lePendu.getNbEssai();
+        Assertions.assertEquals(oldNbEssai, res);
+    }
+
+    @Test
     void testTestCharShouldBeFalseIfNotCorrectChar() throws Exception {
         //Act
         boolean res = lePendu.testChar('a');
+        Assertions.assertFalse(res);
+    }
+
+    @Test
+    void testTestCharShouldBeFalseIfNbEssaiIsO() throws Exception {
+        lePendu = new LePendu(0);
+        lePendu.genererMasque(generateur);
+        //Act
+        boolean res = lePendu.testChar('g');
         Assertions.assertFalse(res);
     }
 
@@ -80,5 +98,22 @@ public class LePenduTest {
         int res = lePendu.getNbEssai();
         Assertions.assertEquals(oldNbEssai-1, res);
     }
+
+    @Test
+    void testTestCharShouldBeUpdateMasqueIfCorrectChar() throws Exception {
+        //Act
+        lePendu.testChar('g');
+        lePendu.testChar('o');
+        Assertions.assertEquals("goog**", lePendu.getMasque());
+    }
+
+    @Test
+    void testTestCharShouldBeNotUpdateMasqueIfNotCorrectChar() throws Exception {
+        //Act
+        lePendu.testChar('g');
+        lePendu.testChar('a');
+        Assertions.assertEquals("g**g**", lePendu.getMasque());
+    }
+
     //endregion
 }
