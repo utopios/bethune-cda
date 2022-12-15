@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.exception.ErrorWordException;
 import org.example.interfaces.IGenerateur;
 
 public class LePendu {
@@ -20,8 +21,12 @@ public class LePendu {
     }
 
     public void genererMasque(IGenerateur generateurMot) throws Exception {
+        String motAtrouve = generateurMot.generer();
+        if(motAtrouve == null || motAtrouve.equals("")) {
+            throw new ErrorWordException();
+        }
         String tmpMasque = "";
-        for(int i=0; i < generateurMot.generer().length(); i++) {
+        for(int i=0; i < motAtrouve.length(); i++) {
             tmpMasque += "*";
         }
         masque = tmpMasque;

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.exception.ErrorWordException;
 import org.example.interfaces.IGenerateur;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,5 +30,25 @@ public class LePenduTest {
         lePendu.genererMasque(generateur);
         //Assert
         Assertions.assertEquals("******", lePendu.getMasque());
+    }
+
+    @Test
+    void testGenererMasqueShouldRaiseExceptionIfNoChars() throws Exception {
+        //Arange
+        Mockito.when(generateur.generer()).thenReturn("");
+
+        Assertions.assertThrowsExactly(ErrorWordException.class, () -> {
+           lePendu.genererMasque(generateur);
+        });
+    }
+
+    @Test
+    void testGenererMasqueShouldRaiseExceptionIfWordIsNull() throws Exception {
+        //Arange
+        Mockito.when(generateur.generer()).thenReturn(null);
+
+        Assertions.assertThrowsExactly(ErrorWordException.class, () -> {
+            lePendu.genererMasque(generateur);
+        });
     }
 }
