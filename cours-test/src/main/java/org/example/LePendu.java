@@ -29,11 +29,11 @@ public class LePendu {
         if(motATrouve == null || motATrouve.equals("")) {
             throw new ErrorWordException();
         }
-        String tmpMasque = "";
+        masque = "";
         for(int i=0; i < motATrouve.length(); i++) {
-            tmpMasque += "*";
+            masque += "*";
         }
-        masque = tmpMasque;
+
     }
 
     public boolean testChar(char c) throws Exception {
@@ -57,9 +57,10 @@ public class LePendu {
     }
 
     public boolean testWin() throws Exception {
-        if(getNbEssai() > 0 && getMasque().equals(motATrouve)) {
+        /*if(getNbEssai() > 0 && getMasque().equals(motATrouve)) {
             return true;
         }
-        return false;
+        return false;*/
+        return getNbEssai() > 0 && getMasque().equals(motATrouve);
     }
 }
