@@ -18,10 +18,13 @@ public class LePenduTest {
     private IGenerateur generateur;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         lePendu = new LePendu();
+        Mockito.when(generateur.generer()).thenReturn("google");
+        lePendu.genererMasque(generateur);
     }
 
+    //region tests de la méthode genererMasque
     @Test
     void testGenererMasqueShouldBeCorrectMasque() throws Exception {
         //Arange
@@ -51,4 +54,31 @@ public class LePenduTest {
             lePendu.genererMasque(generateur);
         });
     }
+
+    //endregion
+
+    //region tests de la méthode testChar
+    @Test
+    void testTestCharShouldBeTrueIfCorrectChar() throws Exception {
+        //Act
+        boolean res = lePendu.testChar('g');
+        Assertions.assertTrue(res);
+    }
+
+    @Test
+    void testTestCharShouldBeFalseIfNotCorrectChar() throws Exception {
+        //Act
+        boolean res = lePendu.testChar('a');
+        Assertions.assertFalse(res);
+    }
+
+    @Test
+    void testTestCharShouldBeUpdateNbEssaiIfNotCorrectChar() throws Exception {
+        //Act
+        int oldNbEssai = lePendu.getNbEssai();
+        lePendu.testChar('a');
+        int res = lePendu.getNbEssai();
+        Assertions.assertEquals(oldNbEssai-1, res);
+    }
+    //endregion
 }

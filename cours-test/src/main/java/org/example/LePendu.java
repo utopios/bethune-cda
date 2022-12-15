@@ -21,19 +21,25 @@ public class LePendu {
     }
 
     public void genererMasque(IGenerateur generateurMot) throws Exception {
-        String motAtrouve = generateurMot.generer();
-        if(motAtrouve == null || motAtrouve.equals("")) {
+        motATrouve = generateurMot.generer();
+        if(motATrouve == null || motATrouve.equals("")) {
             throw new ErrorWordException();
         }
         String tmpMasque = "";
-        for(int i=0; i < motAtrouve.length(); i++) {
+        for(int i=0; i < motATrouve.length(); i++) {
             tmpMasque += "*";
         }
         masque = tmpMasque;
     }
 
     public boolean testChar(char c) throws Exception {
-        throw new Exception();
+        if(motATrouve.contains(String.valueOf(c))) {
+            return true;
+        }
+        else {
+            this.nbEssai--;
+            return false;
+        }
     }
 
     public boolean testWin() throws Exception {
