@@ -20,7 +20,11 @@ public class LePendu {
     }
 
     public void genererMasque(IGenerateur generateurMot) throws Exception {
-        throw new Exception();
+        String tmpMasque = "";
+        for(int i=0; i < generateurMot.generer().length(); i++) {
+            tmpMasque += "*";
+        }
+        masque = tmpMasque;
     }
 
     public boolean testChar(char c) throws Exception {
