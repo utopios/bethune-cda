@@ -1,8 +1,10 @@
 package com.example.coursspring.controller;
 
 import com.example.coursspring.entity.Personne;
+import com.example.coursspring.interfaces.IPersonneService;
 import com.example.coursspring.service.PersonneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +16,8 @@ import java.util.List;
 public class PersonneController {
 
     @Autowired
-    private PersonneService personneService;
+    @Qualifier("personneService")
+    private IPersonneService personneService;
     //@RequestMapping(path = "/personnes", method = RequestMethod.GET)
     //@GetMapping("/personne")
     @GetMapping("")

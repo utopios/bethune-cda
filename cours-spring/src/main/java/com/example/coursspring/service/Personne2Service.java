@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PersonneService implements IPersonneService {
+public class Personne2Service implements IPersonneService {
 
     public List<Personne> getPersonnes() {
-        return Arrays.asList(new Personne(1, "toto", "tata"), new Personne(2, "titi", "minet"));
+        return Arrays.asList(new Personne(3, "toto", "tata"), new Personne(4, "titi", "minet"));
     }
 }
