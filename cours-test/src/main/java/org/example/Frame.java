@@ -36,7 +36,7 @@ public class Frame {
             return true;
         }
         else {
-            if(rolls.size() <= 2 && rolls.get(0).getPins() == 10) {
+            if(rolls.size() <= 2 && (rolls.get(0).getPins() == 10 || (rolls.get(1).getPins() +rolls.get(0).getPins() == 10))) {
                 int firstRollPins = rolls.get(0).getPins();
                 if(rolls.size()<= 1) {
                     max = (firstRollPins == 10) ? 10 : 10 - firstRollPins;
