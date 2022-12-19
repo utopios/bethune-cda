@@ -134,4 +134,18 @@ public class FrameTest {
 
         Assertions.assertTrue(res);
     }
+
+    @Test
+    void Roll_LastFrame_ThirdRoll_Spare_CheckScore() throws Exception {
+        frame = new Frame(generateurBowling, true);
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(6));
+        rolls.add(new Roll(4));
+
+        Mockito.when(generateurBowling.randomPin(10)).thenReturn(2);
+        frame.setRolls(rolls);
+        frame.makeRoll();
+
+        Assertions.assertEquals(12, frame.getScore());
+    }
 }

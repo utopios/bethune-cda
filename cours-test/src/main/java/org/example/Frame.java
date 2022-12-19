@@ -42,7 +42,7 @@ public class Frame {
                     max = (firstRollPins == 10) ? 10 : 10 - firstRollPins;
                 }
                 else {
-                    max = (rolls.get(1).getPins() == 10) ? 10 : 10 - rolls.get(1).getPins();
+                    max = (rolls.get(1).getPins() == 10 || (rolls.get(1).getPins() +rolls.get(0).getPins() == 10)) ? 10 : 10 - rolls.get(1).getPins();
                 }
 
                 int s = _generateur.randomPin(max);
