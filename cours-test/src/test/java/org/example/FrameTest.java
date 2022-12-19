@@ -9,9 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @ExtendWith(MockitoExtension.class)
 public class FrameTest {
@@ -22,7 +22,7 @@ public class FrameTest {
     private IGenerateurBowling generateurBowling;
 
     @BeforeEach
-    void setUp() {
+    void setUp()  {
         frame = new Frame(generateurBowling, false);
     }
 

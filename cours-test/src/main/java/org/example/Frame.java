@@ -20,7 +20,7 @@ public class Frame {
     public boolean makeRoll() throws Exception {
         int max = 10;
         if(!_lastFrame) {
-            if(rolls.size() >=2 ) {
+            /*if(rolls.size() >=2 ) {
                 return false;
             }
             if(rolls.size() > 0) {
@@ -33,10 +33,17 @@ public class Frame {
             int s = _generateur.randomPin(max);
             Roll roll = new Roll(s);
             rolls.add(roll);
-            return true;
+            return true;*/
+            if(rolls.size() == 0 || (rolls.size() < 2 && rolls.get(0).getPins() < 10)) {
+                max = rolls.size() == 0 ? 10 : 10 - rolls.get(0).getPins();
+                Roll roll = new Roll(_generateur.randomPin(max));
+                rolls.add(roll);
+                return true;
+            }
+            return false;
         }
         else {
-            if(rolls.size() <= 2 && (rolls.get(0).getPins() == 10 || (rolls.get(1).getPins() +rolls.get(0).getPins() == 10))) {
+            /*if(rolls.size() <= 2 && (rolls.get(0).getPins() == 10 || (rolls.get(1).getPins() +rolls.get(0).getPins() == 10))) {
                 int firstRollPins = rolls.get(0).getPins();
                 if(rolls.size()<= 1) {
                     max = (firstRollPins == 10) ? 10 : 10 - firstRollPins;
@@ -47,6 +54,12 @@ public class Frame {
 
                 int s = _generateur.randomPin(max);
                 Roll roll = new Roll(s);
+                rolls.add(roll);
+                return true;
+            }*/
+            if(rolls.size() <= 2 && (rolls.get(0).getPins() == 10 || (rolls.get(1).getPins() +rolls.get(0).getPins() == 10))) {
+                max = (rolls.size() == 2 && rolls.get(1).getPins() +rolls.get(0).getPins() != 10) ? (10 - rolls.get(1).getPins()) : 10;
+                Roll roll = new Roll(_generateur.randomPin(max));
                 rolls.add(roll);
                 return true;
             }
