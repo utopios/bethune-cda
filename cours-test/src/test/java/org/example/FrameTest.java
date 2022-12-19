@@ -68,4 +68,17 @@ public class FrameTest {
 
         Assertions.assertFalse(res);
     }
+
+    @Test
+    void Roll_LastFrame_SecondRoll_FirstRollStrick_ReturnTrue() throws Exception {
+        frame = new Frame(generateurBowling, true);
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(10));
+
+        frame.setRolls(rolls);
+
+        boolean res = frame.makeRoll();
+
+        Assertions.assertTrue(res);
+    }
 }
