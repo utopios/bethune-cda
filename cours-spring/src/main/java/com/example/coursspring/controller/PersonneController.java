@@ -1,18 +1,25 @@
 package com.example.coursspring.controller;
 
+import com.example.coursspring.entity.Personne;
+import com.example.coursspring.service.PersonneService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @ResponseBody
 @RequestMapping("/personne")
 public class PersonneController {
 
+    @Autowired
+    private PersonneService personneService;
     //@RequestMapping(path = "/personnes", method = RequestMethod.GET)
     //@GetMapping("/personne")
     @GetMapping("")
-    public String getPersonnes() {
-        return "Je suis une action qui affiche une liste de personnes";
+    public List<Personne> getPersonnes() {
+        return  personneService.getPersonnes();
     }
 
     //@GetMapping("/personne/1")
