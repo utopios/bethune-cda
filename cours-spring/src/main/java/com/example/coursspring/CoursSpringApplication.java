@@ -13,7 +13,7 @@ public class CoursSpringApplication {
     private static MaClasse maClasse;
     public static void main(String[] args) {
         SpringApplication.run(CoursSpringApplication.class, args);
-        maClasse.getClass();
+       maClasse = new MaClasse();
     }
 
 }
