@@ -36,15 +36,21 @@ public class Frame {
             return true;
         }
         else {
-            if(rolls.size() == 1) {
+            if(rolls.size() <= 2 && rolls.get(0).getPins() == 10) {
                 int firstRollPins = rolls.get(0).getPins();
-                max = 10 -firstRollPins;
+                if(rolls.size()<= 1) {
+                    max = (firstRollPins == 10) ? 10 : 10 - firstRollPins;
+                }
+                else {
+                    max = (rolls.get(1).getPins() == 10) ? 10 : 10 - rolls.get(1).getPins();
+                }
+
                 int s = _generateur.randomPin(max);
                 Roll roll = new Roll(s);
                 rolls.add(roll);
                 return true;
             }
-            return true;
+            throw new Exception();
         }
     }
 

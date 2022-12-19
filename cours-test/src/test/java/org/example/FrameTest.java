@@ -81,4 +81,44 @@ public class FrameTest {
 
         Assertions.assertTrue(res);
     }
+
+    @Test
+    void Roll_LastFrame_SecondRoll_FirstRollStrick_CheckScore() throws Exception {
+        frame = new Frame(generateurBowling, true);
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(10));
+        Mockito.when(generateurBowling.randomPin(10)).thenReturn(7);
+        frame.setRolls(rolls);
+
+        frame.makeRoll();
+
+        Assertions.assertEquals(17, frame.getScore());
+    }
+
+    @Test
+    void Roll_LastFrame_ThirdRoll_FirstRollStrick_ReturnTrue() throws Exception {
+        frame = new Frame(generateurBowling, true);
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(10));
+        rolls.add(new Roll(4));
+        frame.setRolls(rolls);
+
+        boolean res = frame.makeRoll();
+
+        Assertions.assertTrue(res);
+    }
+
+    @Test
+    void Roll_LastFrame_ThirdRoll_FirstRollStrick_CheckScore() throws Exception {
+        frame = new Frame(generateurBowling, true);
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(10));
+        rolls.add(new Roll(4));
+
+        Mockito.when(generateurBowling.randomPin(6)).thenReturn(2);
+        frame.setRolls(rolls);
+        frame.makeRoll();
+
+        Assertions.assertEquals(16, frame.getScore());
+    }
 }
