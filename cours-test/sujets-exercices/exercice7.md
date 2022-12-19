@@ -42,10 +42,10 @@ public class Frame {
   
   public Frame(IGenerateur generateur, boolean lastFrame) {
     _lastFrame = lastFrame;
-    _genrateur = generateur;
+    _generateur = generateur;
   }
   
-  public bool makeRoll() throws Exception {
+  public boolean makeRoll() throws Exception {
     throw new Exception();
   }
 }
