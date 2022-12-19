@@ -50,7 +50,7 @@ public class Frame {
                 rolls.add(roll);
                 return true;
             }
-            throw new Exception();
+            return false;
         }
     }
 

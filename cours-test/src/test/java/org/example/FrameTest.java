@@ -148,4 +148,19 @@ public class FrameTest {
 
         Assertions.assertEquals(12, frame.getScore());
     }
+
+    @Test
+    void Roll_LastFrame_FourthRoll_ReturnFalse() throws Exception {
+        frame = new Frame(generateurBowling, true);
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(6));
+        rolls.add(new Roll(4));
+        rolls.add(new Roll(4));
+
+        frame.setRolls(rolls);
+
+        boolean res = frame.makeRoll();
+
+        Assertions.assertFalse(res);
+    }
 }
