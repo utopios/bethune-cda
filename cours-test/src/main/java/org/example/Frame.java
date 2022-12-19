@@ -18,7 +18,19 @@ public class Frame {
     }
 
     public boolean makeRoll() throws Exception {
-        Roll roll = new Roll(_generateur.randomPin(10));
+        int max = 10;
+        if(rolls.size() >=2 ) {
+            return false;
+        }
+        if(rolls.size() > 0) {
+            int firstRollPins = rolls.get(0).getPins();
+            if(firstRollPins == 10){
+                return false;
+            }
+            max = 10 -firstRollPins;
+        }
+        int s = _generateur.randomPin(max);
+        Roll roll = new Roll(s);
         rolls.add(roll);
         return true;
     }

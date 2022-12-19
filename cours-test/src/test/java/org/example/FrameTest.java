@@ -9,6 +9,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @ExtendWith(MockitoExtension.class)
 public class FrameTest {
 
@@ -27,5 +31,41 @@ public class FrameTest {
         Mockito.when(generateurBowling.randomPin(10)).thenReturn(6);
         frame.makeRoll();
         Assertions.assertEquals(6, frame.getScore());
+    }
+
+    @Test
+    void Roll_SimpleFrame_SecondRoll_CheckScore() throws Exception {
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(4));
+        frame.setRolls(rolls);
+        Mockito.when(generateurBowling.randomPin(6)).thenReturn(5);
+
+        frame.makeRoll();
+
+        Assertions.assertEquals(9, frame.getScore());
+    }
+
+    @Test
+    void Roll_SimpleFrame_SecondRoll_FirstRollStrick_ReturnFalse() throws Exception {
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(10));
+        frame.setRolls(rolls);
+
+        boolean res = frame.makeRoll();
+
+        Assertions.assertFalse(res);
+    }
+
+    @Test
+    void Roll_SimpleFrame_MoreRolls_ReturnFalse() throws Exception {
+        List<Roll> rolls = new ArrayList<>();
+        rolls.add(new Roll(4));
+        rolls.add(new Roll(5));
+
+        frame.setRolls(rolls);
+
+        boolean res = frame.makeRoll();
+
+        Assertions.assertFalse(res);
     }
 }
