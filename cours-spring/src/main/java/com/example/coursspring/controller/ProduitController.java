@@ -17,12 +17,10 @@ import java.util.List;
 @ResponseBody
 public class ProduitController {
 
-    /*@Autowired
-    @Qualifier("produitService")
-    IDAO<Produit> produitService;*/
+    @Autowired
+    ProduitService produitService;
     @GetMapping("")
     public List<Produit> getProduits() {
-        ProduitService produitService = new ProduitService();
         return produitService.findAll();
     }
 }

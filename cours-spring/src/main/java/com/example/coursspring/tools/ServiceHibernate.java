@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 public class ServiceHibernate {
     private Session _session;
     public ServiceHibernate()  {
-        _session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            _session = HibernateUtil.getSessionFactory().openSession();
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Session getSession() {

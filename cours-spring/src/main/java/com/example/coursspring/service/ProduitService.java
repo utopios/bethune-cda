@@ -16,14 +16,15 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
-
+@Service
 public class ProduitService implements IDAO<Produit> {
 
-    @Autowired
+    //@Autowired
     private ServiceHibernate serviceHibernate;
     private Session session;
-    public ProduitService(){
-        session = serviceHibernate.getSession();
+    public ProduitService(ServiceHibernate serviceHibernate){
+        this.serviceHibernate = serviceHibernate;
+        session = this.serviceHibernate.getSession();
     }
     @Override
     public boolean create(Produit o) {

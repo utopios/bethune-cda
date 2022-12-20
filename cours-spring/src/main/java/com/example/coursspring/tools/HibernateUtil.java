@@ -7,22 +7,14 @@ import org.hibernate.cfg.Configuration;
 
 
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory;
-
-    static {
-        try {
-            sessionFactory = buildSessionFactory();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static final SessionFactory sessionFactory = buildSessionFactory();
 
 
     private static SessionFactory buildSessionFactory() {
         try {
             return new Configuration().configure("static/hibernate.cfg.xml").buildSessionFactory();
-        } catch (Exception | HibernateException e) {
-            throw new RuntimeException(e);
+        } catch (HibernateException e) {
+            throw e;
         }
 
     }
