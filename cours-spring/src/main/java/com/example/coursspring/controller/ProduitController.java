@@ -27,6 +27,11 @@ public class ProduitController {
         return produitService.findById(id);
     }
 
+    @GetMapping("/getproduit")
+    public Produit getProduitByParams(@RequestParam("id") Integer id) {
+        return produitService.findById(id);
+    }
+
     @GetMapping ("/delete/{id}")
     public String deleteProduit(@PathVariable("id") Integer id) {
         Produit p = produitService.findById(id);

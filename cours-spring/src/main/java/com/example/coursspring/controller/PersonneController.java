@@ -32,8 +32,13 @@ public class PersonneController {
     }
 
     //@PostMapping("/personne")
+   /* @PostMapping("")
+    public Personne postPersonne(@RequestBody Personne personne) {
+        return personne;
+    }*/
+
     @PostMapping("")
-    public String postPersonne() {
-        return "Je suis une action pour poster une personne";
+    public Personne postPersonne(@RequestParam String nom, @RequestParam String prenom) {
+        return new Personne(1, nom, prenom);
     }
 }
