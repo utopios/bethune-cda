@@ -30,8 +30,8 @@ public class ProduitService implements IDAO<Produit> {
     public boolean create(Produit o) {
 
         session.beginTransaction();
-        session.save(o);
-
+        //session.save(o);
+        session.persist(o);
         return true;
     }
 
@@ -68,7 +68,7 @@ public class ProduitService implements IDAO<Produit> {
     public List<Produit> findAll() {
 
         session.beginTransaction();
-        Query<Produit> produitQuery = session.createQuery("from Produit");
+        Query<Produit> produitQuery = session.createQuery("from Produit", Produit.class);
 
         return produitQuery.list();
     }

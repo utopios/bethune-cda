@@ -26,9 +26,9 @@ public class PersonneController {
     }
 
     //@GetMapping("/personne/1")
-    @GetMapping("/1")
-    public String getPersonne() {
-        return "Je suis une action qui affiche une seule personne";
+    @GetMapping("/{id}")
+    public String getPersonne(@PathVariable Integer id) {
+        return "Je suis une action qui affiche une seule personne avec l'id : "+id;
     }
 
     //@PostMapping("/personne")
