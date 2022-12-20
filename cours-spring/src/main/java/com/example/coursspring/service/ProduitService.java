@@ -37,6 +37,7 @@ public class ProduitService implements IDAO<Produit> {
         session.beginTransaction();
         //session.save(o);
         session.persist(o);
+        session.getTransaction().commit();
         return true;
     }
 
@@ -45,7 +46,7 @@ public class ProduitService implements IDAO<Produit> {
 
         session.beginTransaction();
         session.update(o);
-
+        session.getTransaction().commit();
         return true;
     }
 
@@ -54,7 +55,7 @@ public class ProduitService implements IDAO<Produit> {
 
         session.beginTransaction();
         session.delete(o);
-
+        session.getTransaction().commit();
         return true;
     }
 
@@ -72,7 +73,7 @@ public class ProduitService implements IDAO<Produit> {
     @Override
     public List<Produit> findAll() {
 
-        session.beginTransaction();
+        //session.beginTransaction();
         Query<Produit> produitQuery = session.createQuery("from Produit", Produit.class);
 
         return produitQuery.list();

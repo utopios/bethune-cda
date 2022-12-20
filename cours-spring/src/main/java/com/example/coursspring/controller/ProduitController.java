@@ -40,4 +40,12 @@ public class ProduitController {
         }
         return "Aucun produit avec cet id";
     }
+
+    @PostMapping("")
+    public Produit postProduit(@RequestBody Produit produit) {
+        if(produitService.create(produit)) {
+            return produit;
+        }
+        return null;
+    }
 }
