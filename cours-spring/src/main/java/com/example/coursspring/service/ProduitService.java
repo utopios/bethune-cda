@@ -11,12 +11,17 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.Date;
 import java.util.List;
 
+/*@Component
+@RequestScope*/
 @Service
+//Scope => par session
 public class ProduitService implements IDAO<Produit> {
 
     //@Autowired
@@ -58,7 +63,7 @@ public class ProduitService implements IDAO<Produit> {
         Produit produit = null;
 
         produit = (Produit) session.get(Produit.class, id);
-        session.close();
+        //session.close();
         return produit;
     }
 
