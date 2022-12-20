@@ -2,3 +2,4 @@
 
 - En partant de l'exercice 2 ajoutez :
   - Une action qui permet d'afficher un produit par son Id
+  - Une action qui permet de supprimer un produit par son Id
