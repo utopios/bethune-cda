@@ -21,4 +21,14 @@ public class Todo {
     private Date date;
 
     private boolean status;
+
+    public Todo() {
+
+    }
+    public Todo(String title, String description) {
+        this.setTitle(title);
+        this.setDescription(description);
+        this.setStatus(false);
+        this.setDate(new Date());
+    }
 }

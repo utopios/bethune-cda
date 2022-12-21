@@ -2,10 +2,9 @@ package com.example.correctiontodolist.repository.impl;
 
 import com.example.correctiontodolist.entity.Todo;
 import com.example.correctiontodolist.repository.BaseRepository;
-import com.example.correctiontodolist.service.ServiceHibernate;
+import com.example.correctiontodolist.tool.ServiceHibernate;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

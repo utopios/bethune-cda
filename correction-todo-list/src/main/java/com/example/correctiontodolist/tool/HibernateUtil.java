@@ -1,4 +1,4 @@
-package com.example.correctiontodolist.service;
+package com.example.correctiontodolist.tool;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
