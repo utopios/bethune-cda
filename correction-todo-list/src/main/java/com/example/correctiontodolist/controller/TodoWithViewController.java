@@ -2,6 +2,7 @@ package com.example.correctiontodolist.controller;
 
 import com.example.correctiontodolist.entity.Todo;
 import com.example.correctiontodolist.service.TodoService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,5 +33,22 @@ public class TodoWithViewController {
         }
         mv.addObject("todos", todos);
         return mv;
+    }
+
+    @GetMapping("/detail/{id}")
+    public ModelAndView getDetail(@PathVariable Integer id) {
+        ModelAndView mv = new ModelAndView("detail");
+        mv.addObject("todo", todoService.getTodoById(id));
+        return mv;
+    }
+
+    @GetMapping("/update/{id}")
+    public void updapteStatus(@PathVariable Integer id, HttpServletResponse response) throws Exception {
+        try {
+            todoService.updateStatus(id);
+            response.sendRedirect("/todos-html/detail/"+id);
+        }catch (Exception ex) {
+            throw ex;
+        }
     }
 }

@@ -56,4 +56,8 @@ public class TodoService {
     public List<Todo> getByStatus(boolean status) {
         return _todoRespository.findByStatus(status);
     }
+
+    public Todo getTodoById(int id) {
+        return _todoRespository.findById(id);
+    }
 }
