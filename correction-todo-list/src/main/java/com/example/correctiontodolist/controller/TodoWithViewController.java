@@ -5,9 +5,7 @@ import com.example.correctiontodolist.service.TodoService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -50,5 +48,24 @@ public class TodoWithViewController {
         }catch (Exception ex) {
             throw ex;
         }
+    }
+
+    @GetMapping("/form")
+    public ModelAndView getForm() {
+        ModelAndView mv = new ModelAndView("form");
+        return mv;
+    }
+
+    @PostMapping("/submitForm")
+    public ModelAndView submitForm(@RequestParam String title, @RequestParam String description, HttpServletResponse response) {
+        ModelAndView mv = new ModelAndView("form");
+        try {
+            Todo todo = todoService.createTodo(title, description);
+            response.sendRedirect("/todos-html");
+        }catch (Exception ex) {
+            mv.addObject("message", "error ajout");
+        }
+
+        return mv;
     }
 }
