@@ -48,6 +48,11 @@ public class TodoRespository implements BaseRepository<Todo> {
         return true;
     }
 
+    @Override
+    public Todo findById(int id) {
+        return (Todo)_session.get(Todo.class, id);
+    }
+
     public List<Todo> findByStatus(boolean status) {
         Query<Todo> todoQuery = _session.createQuery("from Todo where status = :status", Todo.class);
         todoQuery.setParameter(0, status);

@@ -20,4 +20,15 @@ public class TodoService {
         }
         return null;
     }
+
+    public Todo updateTodo(int id, String title, String description) throws Exception {
+        Todo todo = _todoRespository.findById(id);
+        if(todo != null) {
+            todo.setTitle(title);
+            todo.setDescription(description);
+            _todoRespository.update(todo);
+            return todo;
+        }
+        throw new Exception("Aucun todo avec cet id");
+    }
 }

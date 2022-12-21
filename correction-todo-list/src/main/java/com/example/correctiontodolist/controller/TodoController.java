@@ -26,4 +26,14 @@ public class TodoController {
             throw ex;
         }
     }
+
+    @PostMapping("/update")
+    public Todo post(@RequestParam Integer id, @RequestParam String title, @RequestParam String description) throws Exception {
+        try {
+            Todo todo = _todoService.updateTodo(id,title, description);
+            return todo;
+        }catch (Exception ex) {
+            throw ex;
+        }
+    }
 }
