@@ -1,5 +1,7 @@
 package com.example.coursspring.controller;
 
+import com.example.coursspring.service.PersonneService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +16,12 @@ public class PersonneAvecVueController {
         return "index";
     }*/
 
+    @Autowired
+    PersonneService personneService;
     @GetMapping("")
     public ModelAndView getPersonnesSousFormathtml() {
         ModelAndView mv = new ModelAndView("index");
+        mv.addObject("personnes", personneService.getPersonnes());
         return mv;
     }
 }

@@ -6,7 +6,12 @@
 </head>
 <body>
 <h1>
-    Page liste personnes
+     liste personnes
 </h1>
+<div th:each="personne : ${personnes}">
+    <div th:text="${personne.getNom()}"></div>
+    <div th:text="${personne.getPrenom()}"></div>
+
+</div>
 </body>
 </html>
