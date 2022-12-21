@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/todo")
 @ResponseBody
@@ -50,5 +52,9 @@ public class TodoController {
         }catch (Exception ex) {
             throw ex;
         }
+    }
+    @GetMapping("{status}")
+    public List<Todo> get(@PathVariable boolean status) {
+        return _todoService.getByStatus(status);
     }
 }

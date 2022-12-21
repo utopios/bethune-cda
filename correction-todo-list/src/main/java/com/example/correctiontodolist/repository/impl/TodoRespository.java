@@ -55,7 +55,7 @@ public class TodoRespository implements BaseRepository<Todo> {
 
     public List<Todo> findByStatus(boolean status) {
         Query<Todo> todoQuery = _session.createQuery("from Todo where status = :status", Todo.class);
-        todoQuery.setParameter(0, status);
+        todoQuery.setParameter("status", status);
         return todoQuery.list();
     }
 }

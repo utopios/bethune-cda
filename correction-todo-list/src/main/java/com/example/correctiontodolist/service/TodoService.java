@@ -5,6 +5,8 @@ import com.example.correctiontodolist.repository.impl.TodoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TodoService {
     @Autowired
@@ -49,5 +51,9 @@ public class TodoService {
             return true;
         }
         throw new Exception("Aucun todo avec cet id");
+    }
+
+    public List<Todo> getByStatus(boolean status) {
+        return _todoRespository.findByStatus(status);
     }
 }
