@@ -31,4 +31,23 @@ public class TodoService {
         }
         throw new Exception("Aucun todo avec cet id");
     }
+
+    public boolean deleteTodo(int id) throws Exception {
+        Todo todo = _todoRespository.findById(id);
+        if(todo != null) {
+            _todoRespository.delete(todo);
+            return true;
+        }
+        throw new Exception("Aucun todo avec cet id");
+    }
+
+    public boolean updateStatus(int id) throws Exception {
+        Todo todo = _todoRespository.findById(id);
+        if(todo != null) {
+            todo.setStatus(!todo.isStatus());
+            _todoRespository.update(todo);
+            return true;
+        }
+        throw new Exception("Aucun todo avec cet id");
+    }
 }

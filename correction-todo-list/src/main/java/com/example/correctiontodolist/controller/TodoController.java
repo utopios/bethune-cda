@@ -4,10 +4,7 @@ import com.example.correctiontodolist.entity.Todo;
 import com.example.correctiontodolist.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/todo")
@@ -32,6 +29,24 @@ public class TodoController {
         try {
             Todo todo = _todoService.updateTodo(id,title, description);
             return todo;
+        }catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    @GetMapping("/delete/{id}")
+    public boolean delete(@PathVariable Integer id) throws Exception {
+        try {
+            return _todoService.deleteTodo(id);
+        }catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    @GetMapping("/update/{id}")
+    public boolean updapteStatus(@PathVariable Integer id) throws Exception {
+        try {
+            return _todoService.updateStatus(id);
         }catch (Exception ex) {
             throw ex;
         }
