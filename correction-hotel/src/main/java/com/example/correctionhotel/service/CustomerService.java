@@ -1,6 +1,7 @@
 package com.example.correctionhotel.service;
 
 import com.example.correctionhotel.repository.CustomerRepository;
+import com.example.correctionhotel.util.exceptions.ErrorFieldException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,9 @@ public class CustomerService {
     }
 
     public boolean create(String firstName, String lastName, String phone) throws Exception {
-        throw new Exception("not implemented");
+        if(firstName == "" || lastName == "" || phone == "") {
+            throw new ErrorFieldException();
+        }
+        return true;
     }
 }
