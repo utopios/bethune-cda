@@ -25,4 +25,10 @@ public class SessionController {
     public String read() {
         return _httpSession.getAttribute("name").toString();
     }
+    @GetMapping("supprimer")
+    public String remove() {
+        _httpSession.removeAttribute("name");
+        return "suppression Ok";
+    }
+
 }
