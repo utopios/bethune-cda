@@ -15,7 +15,7 @@ public abstract class BaseRepository<T> {
         _session = _serviceHibernate.getSession();
     }
 
-    public void create(T element) {
+    public void create(T element) throws Exception {
         _session.beginTransaction();
         _session.persist(element);
         _session.getTransaction().commit();

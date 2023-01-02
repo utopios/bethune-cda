@@ -30,11 +30,11 @@ public class CustomerServiceTest {
     @Mock
     private CustomerRepository customerRepository;
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         //Arrange
         customerService = new CustomerService(customerRepository);
         customer = new Customer();
-        lenient().doNothing().when(customerRepository).create(customer);
+        //lenient().doNothing().when(customerRepository).create(customer);
     }
 
     private static Stream<Arguments> getValuesOfTest() {
@@ -57,6 +57,31 @@ public class CustomerServiceTest {
         });
     }
     //Test 2, creation fonctionne avec un boolean
+    @Test
+    void createShouldReturnTrueIfCorrectValue() throws Exception {
+        //Arrange
+        /* A ne pas faire
+        customer.setFirstName("toto");
+        customer.setLastName("tata");
+        customer.setPhone("0101010101");
+        */
+        //Act
+        boolean result = customerService.create("toto", "tata", "0101010101");
+
+        //Assert
+        Assertions.assertTrue(result);
+    }
+
 
     //Test 3, erreur si exception avec repository
+    @Test
+    void createShouldReturnFalseIfExceptionRespository() throws Exception {
+        //Arrange
+        lenient().doThrow(Exception.class).when(customerRepository).create(customer);
+        //Act
+        boolean result = customerService.create("toto", "tata", "0101010101");
+
+        //Assert
+        Assertions.assertFalse(result);
+    }
 }
