@@ -3,6 +3,7 @@ package com.example.correctionhotel.service;
 import com.example.correctionhotel.entity.Customer;
 import com.example.correctionhotel.repository.CustomerRepository;
 import com.example.correctionhotel.util.exceptions.ErrorFieldException;
+import com.example.correctionhotel.util.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,10 +36,14 @@ public class CustomerService {
     }
 
     public Customer getCustomerById(int id) throws Exception {
-        throw new Exception();
+        Customer customer = _customerRepository.findById(id, Customer.class);
+        if(customer == null) {
+            throw new NotFoundException();
+        }
+        return customer;
     }
 
     public List<Customer> getAllCustomers() throws Exception {
-        throw new Exception();
+        return _customerRepository.findAll();
     }
 }
