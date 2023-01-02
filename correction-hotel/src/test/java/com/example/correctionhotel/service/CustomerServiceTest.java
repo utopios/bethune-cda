@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static org.mockito.Mockito.lenient;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -32,8 +33,8 @@ public class CustomerServiceTest {
     void setUp() {
         //Arrange
         customerService = new CustomerService(customerRepository);
-        /*customer = new Customer();
-        Mockito.doNothing().when(customerRepository).create(customer);*/
+        customer = new Customer();
+        lenient().doNothing().when(customerRepository).create(customer);
     }
 
     private static Stream<Arguments> getValuesOfTest() {
@@ -46,7 +47,6 @@ public class CustomerServiceTest {
     }
 
     //Test 1, un des champs est vide => lever une exception
-    @Test
     @ParameterizedTest
     /*@ValueSource(strings = {"", " ","\t"})*/
     @MethodSource("getValuesOfTest")
