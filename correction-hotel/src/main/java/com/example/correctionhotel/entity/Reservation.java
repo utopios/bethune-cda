@@ -11,6 +11,7 @@ import java.util.List;
 @Table(name = "reservation")
 public class Reservation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Status status;
 
