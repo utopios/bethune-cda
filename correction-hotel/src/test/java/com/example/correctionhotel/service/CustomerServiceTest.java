@@ -3,6 +3,7 @@ package com.example.correctionhotel.service;
 import com.example.correctionhotel.entity.Customer;
 import com.example.correctionhotel.repository.CustomerRepository;
 import com.example.correctionhotel.util.exceptions.ErrorFieldException;
+import com.example.correctionhotel.util.exceptions.NotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.mock;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -77,11 +79,36 @@ public class CustomerServiceTest {
     @Test
     void createShouldReturnFalseIfExceptionRespository() throws Exception {
         //Arrange
-        lenient().doThrow(Exception.class).when(customerRepository).create(customer);
+        lenient().doThrow(new Exception()).when(customerRepository).create(customer);
+
         //Act
         boolean result = customerService.create("toto", "tata", "0101010101");
 
         //Assert
         Assertions.assertFalse(result);
+    }
+
+    @Test
+    void getCustomerShouldReturnCustomerIfCorrectId() throws Exception {
+        //Arrange
+        customer.setId(1);
+        Mockito.when(customerRepository.findById(1, Customer.class)).thenReturn(customer);
+
+        //Act
+        Customer result = customerService.getCustomerById(1);
+
+        //Assert
+        Assertions.assertEquals(1, result.getId());
+    }
+
+    @Test
+    void getCustomerShouldRaiseExceptionIWrongId() throws Exception {
+        //Arrange
+        customer.setId(1);
+        Mockito.when(customerRepository.findById(1, Customer.class)).thenReturn(null);
+
+        Assertions.assertThrowsExactly(NotFoundException.class, () -> {
+           customerService.getCustomerById(1);
+        });
     }
 }

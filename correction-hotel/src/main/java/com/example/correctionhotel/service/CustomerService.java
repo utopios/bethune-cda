@@ -5,6 +5,8 @@ import com.example.correctionhotel.repository.CustomerRepository;
 import com.example.correctionhotel.util.exceptions.ErrorFieldException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -30,6 +32,13 @@ public class CustomerService {
                 return false;
             }
         }
+    }
 
+    public Customer getCustomerById(int id) throws Exception {
+        throw new Exception();
+    }
+
+    public List<Customer> getAllCustomers() throws Exception {
+        throw new Exception();
     }
 }
