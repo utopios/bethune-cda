@@ -4,19 +4,19 @@ On désire informatiser la gestion des réservations et des séjours pour un l�
 
 Réaliser une application web en spring mvc de gestion des réservations.
 
-1) Gestion des Clients
+1. Gestion des Clients
 
-a. Affichage de la liste des clients, et détail de chaque client (Réservations, annulations).
+   a. Affichage de la liste des clients, et détail de chaque client (Réservations, annulations).
 
-b. Ajout d’un nouveau client 
+   b. Ajout d’un nouveau client 
 
-2) Gestion des réservations 
+2. Gestion des réservations 
 
-a.    Possibilité d’ajouter une réservation
+   a. Possibilité d’ajouter une réservation
 
-b.    Possibilité de changer le statut de réservation 
+   b. Possibilité de changer le statut de réservation 
 
-c.    Afficher la liste des réservations 
+   c. Afficher la liste des réservations 
 
 **Pour les besoins du TP:**
 
