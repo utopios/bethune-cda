@@ -2,12 +2,14 @@ package com.example.correctiontodolist.controller;
 
 import com.example.correctiontodolist.entity.Todo;
 import com.example.correctiontodolist.service.TodoService;
+import com.example.correctiontodolist.service.UserTodoService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,12 @@ import java.util.List;
 public class TodoWithViewController {
     @Autowired
     private TodoService todoService;
+
+    @Autowired
+    private UserTodoService _userTodoService;
+
+    @Autowired
+    private HttpServletResponse response;
 
     @GetMapping(value = {"","{status}"})
     public ModelAndView getTodos(@PathVariable(required = false) Boolean status) {
@@ -41,23 +49,32 @@ public class TodoWithViewController {
     }
 
     @GetMapping("/update/{id}")
-    public void updapteStatus(@PathVariable Integer id, HttpServletResponse response) throws Exception {
-        try {
-            todoService.updateStatus(id);
-            response.sendRedirect("/todos-html/detail/"+id);
-        }catch (Exception ex) {
-            throw ex;
+    public void updapteStatus(@PathVariable Integer id) throws Exception {
+        if(_userTodoService.isLogged()) {
+            try {
+                todoService.updateStatus(id);
+                response.sendRedirect("/todos-html/detail/"+id);
+            }catch (Exception ex) {
+                throw ex;
+            }
         }
+        response.sendRedirect("/user/login");
     }
 
     @GetMapping("/form")
-    public ModelAndView getForm() {
+    public ModelAndView getForm() throws IOException {
+        if(!_userTodoService.isLogged()) {
+            response.sendRedirect("/user/login");
+        }
         ModelAndView mv = new ModelAndView("form");
         return mv;
     }
 
     @PostMapping("/submitForm")
-    public ModelAndView submitForm(@RequestParam String title, @RequestParam String description, HttpServletResponse response) {
+    public ModelAndView submitForm(@RequestParam String title, @RequestParam String description, HttpServletResponse response) throws IOException {
+        if(!_userTodoService.isLogged()) {
+            response.sendRedirect("/user/login");
+        }
         ModelAndView mv = new ModelAndView("form");
         try {
             Todo todo = todoService.createTodo(title, description);
