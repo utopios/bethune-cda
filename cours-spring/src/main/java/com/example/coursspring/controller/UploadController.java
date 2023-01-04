@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("upload")
@@ -24,6 +26,16 @@ public class UploadController {
     public ModelAndView form() {
         ModelAndView vm = new ModelAndView("form-upload");
         return vm;
+    }
+
+    @GetMapping("files")
+    @ResponseBody
+    public List<String> getFiles() throws IOException {
+        List<String> liste = new ArrayList<>();
+        Files.walk(Paths.get(this.location)).forEach(path -> {
+            liste.add(path.getFileName().toString());
+        });
+        return liste;
     }
 
     @PostMapping("submitForm")
