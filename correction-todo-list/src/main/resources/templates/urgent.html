@@ -7,7 +7,7 @@
 </head>
 <body>
   <header th:replace="fragments/base.html :: header"></header>
-  <h1>La liste des todos</h1>
+  <h1>La liste des todos urgents</h1>
   <table class="table">
       <thead>
       <tr>
@@ -19,12 +19,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="todo : ${todos}">
-          <th scope="row" th:text="${todo.getId()}"></th>
-          <td th:text="${todo.getTitle()}"></td>
-          <td th:text="${todo.getDescription()}"></td>
-          <td th:text="${todo.isStatus()}"></td>
-          <td><a th:href="@{/todos-html/detail/{id}(id=${todo.getId()})}">Detail</a></td>
+      <tr th:replace="fragments/todos.html :: todos">
+
       </tr>
 
       </tbody>

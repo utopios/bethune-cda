@@ -32,7 +32,7 @@ public class TodoWithViewController {
 
     @GetMapping(value = {"","{status}"})
     public ModelAndView getTodos(@PathVariable(required = false) Boolean status) {
-        ModelAndView mv = new ModelAndView("todos");
+        ModelAndView mv = new ModelAndView("home");
         List<Todo> todos = new ArrayList<>();
         if(status == null) {
             todos.addAll(todoService.getByStatus(false));

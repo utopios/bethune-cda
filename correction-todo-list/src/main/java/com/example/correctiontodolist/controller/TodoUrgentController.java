@@ -60,7 +60,7 @@ public class TodoUrgentController {
             _response.sendRedirect("/user/login");
 
         }
-        ModelAndView vm = new ModelAndView("todos");
+        ModelAndView vm = new ModelAndView("home");
         vm.addObject("todos", _urgentTodoService.getUrgentsTodo());
         return vm;
     }
