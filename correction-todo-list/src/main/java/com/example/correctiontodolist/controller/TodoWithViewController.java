@@ -2,6 +2,7 @@ package com.example.correctiontodolist.controller;
 
 import com.example.correctiontodolist.entity.Todo;
 import com.example.correctiontodolist.service.TodoService;
+import com.example.correctiontodolist.service.UrgentTodoService;
 import com.example.correctiontodolist.service.UserTodoService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class TodoWithViewController {
 
     @Autowired
     private UserTodoService _userTodoService;
+
+    @Autowired
+    private UrgentTodoService _urgentTodoService;
 
     @Autowired
     private HttpServletResponse response;
@@ -45,6 +49,7 @@ public class TodoWithViewController {
     public ModelAndView getDetail(@PathVariable Integer id) {
         ModelAndView mv = new ModelAndView("detail");
         mv.addObject("todo", todoService.getTodoById(id));
+        mv.addObject("isUrgent", _urgentTodoService.isUrgent(id));
         return mv;
     }
 
