@@ -15,12 +15,15 @@
     <div>
         <a th:href="@{/todos-html/update/{id}(id=${todo.getId()})}">Changer status</a>
     </div>
-    <div th:if="${isUrgent}">
-        <a th:href="@{/urgent/remove/{id}(id=${todo.getId()})}">Supprimer des urgences</a>
+    <div th:if="${isLogged}">
+        <div th:if="${isUrgent}">
+            <a th:href="@{/urgent/remove/{id}(id=${todo.getId()})}">Supprimer des urgences</a>
+        </div>
+        <div th:if="${!isUrgent}">
+            <a th:href="@{/urgent/add/{id}(id=${todo.getId()})}">Ajouter aux urgences</a>
+        </div>
     </div>
-    <div th:if="${!isUrgent}">
-        <a th:href="@{/urgent/add/{id}(id=${todo.getId()})}">Ajouter aux urgences</a>
-    </div>
+
 </div>
 <div th:unless="${todo != null}">
     <h1>Aucun todo avec cet id</h1>

@@ -49,6 +49,7 @@ public class TodoWithViewController {
     public ModelAndView getDetail(@PathVariable Integer id) {
         ModelAndView mv = new ModelAndView("detail");
         mv.addObject("todo", todoService.getTodoById(id));
+        mv.addObject("isLogged", _userTodoService.isLogged());
         mv.addObject("isUrgent", _urgentTodoService.isUrgent(id));
         return mv;
     }
