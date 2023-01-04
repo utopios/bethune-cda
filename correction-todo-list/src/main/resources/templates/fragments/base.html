@@ -15,13 +15,15 @@
         <li class="nav-item active">
           <a class="nav-link" th:href="@{/todos-html}">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" th:if="${!@userTodoService.isLogged()}">
           <a class="nav-link" th:href="@{/user/form}">S'enregistrer</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" th:if="${!@userTodoService.isLogged()}">
           <a class="nav-link" th:href="@{/user/login}">Login</a>
         </li>
-
+        <li th:if="${@userTodoService.isLogged()}" class="nav-item">
+          <a class="nav-link" th:href="@{/urgent}">Urgent</a>
+        </li>
       </ul>
     </div>
   </nav>
