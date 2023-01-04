@@ -13,5 +13,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.example.correctiontodolist.entity.Todo" />
         <mapping class="com.example.correctiontodolist.entity.UserTodo" />
+        <mapping class="com.example.correctiontodolist.entity.Image" />
     </session-factory>
 </hibernate-configuration>

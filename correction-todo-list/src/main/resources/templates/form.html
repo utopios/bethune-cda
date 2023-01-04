@@ -8,12 +8,15 @@
 </head>
 <body>
 <header th:replace="fragments/base.html :: header"></header>
-<form class="container" th:action="@{/todos-html/submitForm}" method="post">
+<form class="container" th:action="@{/todos-html/submitForm}" method="post" enctype="multipart/form-data">
   <div class="row m-1">
     <input type="text" name="title" placeholder="title" class="form-control col" />
   </div>
   <div class="row m-1">
     <input type="text" name="description" placeholder="description" class="form-control col" />
+  </div>
+  <div class="row m-1">
+    <input type="file" name="images" multiple class="form-control col" />
   </div>
   <div class="row m-1">
     <button class="btn btn-sucess col" type="submit">valider</button>

@@ -15,6 +15,9 @@
     <div>
         <a th:href="@{/todos-html/update/{id}(id=${todo.getId()})}">Changer status</a>
     </div>
+    <div>
+        <img th:each="image : ${todo.getImages()}" th:src="@{/{img}(img=${image.getUrl()})}" />
+    </div>
     <div th:if="${isLogged}">
         <div th:if="${isUrgent}">
             <a th:href="@{/urgent/remove/{id}(id=${todo.getId()})}">Supprimer des urgences</a>
