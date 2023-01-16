@@ -17,4 +17,10 @@ public class PersonController {
     ResponseEntity<List<Person>> get() {
         return ResponseEntity.ok(Arrays.asList(Person.builder().name("toto").build(), Person.builder().name("tata").build()));
     }
+
+
+    @PostMapping("")
+    ResponseEntity<Person> post(@RequestBody Person person) {
+        return ResponseEntity.ok(Person.builder().name(person.getName()).phone("0101010101").build());
+    }
 }
