@@ -14,8 +14,9 @@ public class PersonService {
 
 
 
-    public List<Person> getFromApi() {
-        RestClient<List<Person>, String> restClient = new RestClient<>();
-        return restClient.get("api/person", (Class<List<Person>>) Collections.<Person>emptyList().getClass());
+    public Person[] getFromApi() {
+        RestClient<Person[], String> restClient = new RestClient<>();
+        //return restClient.get("api/person", (Class<List<Person>>) Collections.<Person>emptyList().getClass());
+        return restClient.get("api/person", Person[].class);
     }
 }

@@ -18,7 +18,7 @@ public class ClientPersonController {
     private PersonService _personService;
 
     @GetMapping("")
-    public ResponseEntity<List<Person>> get() {
+    public ResponseEntity<Person[]> get() {
         return ResponseEntity.ok(_personService.getFromApi());
     }
 }
