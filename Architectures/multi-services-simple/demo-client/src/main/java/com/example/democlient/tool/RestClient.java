@@ -19,7 +19,7 @@ public class RestClient<T,V> {
     }
     public T get(String uri, Class<T> type) {
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
-        ResponseEntity<T> responseEntity = template.exchange(server + uri, HttpMethod.GET, requestEntity,type);
+        ResponseEntity<T> responseEntity = template.exchange(server + uri, HttpMethod.GET, requestEntity, type);
         status = responseEntity.getStatusCode();
         return responseEntity.getBody();
     }
