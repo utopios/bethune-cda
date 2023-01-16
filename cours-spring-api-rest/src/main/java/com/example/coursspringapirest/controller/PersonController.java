@@ -3,6 +3,7 @@ package com.example.coursspringapirest.controller;
 import com.example.coursspringapirest.dto.response.PersonDTO;
 import com.example.coursspringapirest.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import java.util.List;
 public class PersonController {
     @Autowired
     private PersonService _personServie;
+
 
     @GetMapping("")
     public ResponseEntity<List<PersonDTO>> get() {
