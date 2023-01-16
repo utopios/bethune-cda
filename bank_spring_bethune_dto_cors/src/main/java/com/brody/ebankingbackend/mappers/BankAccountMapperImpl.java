@@ -1,6 +1,8 @@
 package com.brody.ebankingbackend.mappers;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brody.ebankingbackend.dto.AccountOperationDTO;
@@ -14,10 +16,13 @@ import com.brody.ebankingbackend.entities.SavingAccount;
 
 @Service
 public class BankAccountMapperImpl {
-	
+
+	@Autowired
+	private ModelMapper modelMapper;
 	public CustomerDTO fromCustomer(Customer customer) {
-		CustomerDTO customerDTO = new CustomerDTO();
-		BeanUtils.copyProperties(customer, customerDTO);
+		/*CustomerDTO customerDTO = new CustomerDTO();
+		BeanUtils.copyProperties(customer, customerDTO);*/
+		CustomerDTO customerDTO = modelMapper.map(customer, CustomerDTO.class);
 		return customerDTO;
 	}
 	
