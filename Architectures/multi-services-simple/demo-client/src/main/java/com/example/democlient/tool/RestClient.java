@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class RestClient {
+public class RestClient<T,V> {
     private String server = "http://localhost:8082/";
     private RestTemplate template;
     private HttpHeaders headers;
@@ -17,9 +17,16 @@ public class RestClient {
         headers.add("Accept", "*/*");
         headers.add("content-type", "application/json");
     }
-    public String get(String uri) {
+    public T get(String uri, Class<T> type) {
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
-        ResponseEntity<String> responseEntity = template.exchange(server + uri, HttpMethod.GET, requestEntity,String.class);
+        ResponseEntity<T> responseEntity = template.exchange(server + uri, HttpMethod.GET, requestEntity,type);
+        status = responseEntity.getStatusCode();
+        return responseEntity.getBody();
+    }
+
+    public T Post(String uri,V data, Class<T> type) {
+        HttpEntity<V> requestEntity = new HttpEntity<>(data, headers);
+        ResponseEntity<T> responseEntity = template.exchange(server + uri, HttpMethod.POST, requestEntity,type);
         status = responseEntity.getStatusCode();
         return responseEntity.getBody();
     }
