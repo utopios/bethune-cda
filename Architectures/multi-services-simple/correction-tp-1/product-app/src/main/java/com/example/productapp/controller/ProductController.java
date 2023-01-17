@@ -21,7 +21,7 @@ public class ProductController {
         return ResponseEntity.ok(_productService.createProduct(productDTO));
     }
 
-    @PostMapping("{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ResponseProductDTO> post(@PathVariable int id) {
         try {
             return ResponseEntity.ok(_productService.getProduct(id));
