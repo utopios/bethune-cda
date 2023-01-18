@@ -9,3 +9,10 @@ Le but du TP est de créer une application de gestion clients, produits et comma
    - Il récupère les informations des produits et clients à partir des deux premiers micro-services.
    - Il enregistre chaque commande dans un fichier json.
    - Il demande la mise à jour du stock pour chaque produit de la commande.
+
+4. On souhaite ajouter une seule porte d'entrée(API-GATEWAY) pour la totalité des micro-services. Cette porte doit permettre :
+   - Gestion des clients.
+   - Gestion des produits.
+   - Gestion des commandes.
+
+5. On souhaite développer une application FRONT en Angular pour interagir avec nos micro-services.
