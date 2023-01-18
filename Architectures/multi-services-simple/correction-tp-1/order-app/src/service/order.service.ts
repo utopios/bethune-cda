@@ -3,7 +3,7 @@ import { OrderRequestDto } from "~/dto/order-request-dto";
 import { OrderResponseDto } from "~/dto/order-response-dto";
 import { ProductResponseDTO } from "~/dto/product-response-dto";
 import { WithQty } from "~/dto/with-qty";
-import { getCustomer, getProducts } from "./api.service";
+import { getCustomer, getProducts, updateStock } from "./api.service";
 import * as fs from "fs"
 import ts from "typescript";
 export const createOrder = async(orderRequestDto:OrderRequestDto):Promise<OrderResponseDto|null> => {
@@ -25,8 +25,14 @@ export const createOrder = async(orderRequestDto:OrderRequestDto):Promise<OrderR
         customer:customer
     }
     writeOrder(response)
+    //Update du stock
+    response.products.forEach(p => {
+        updateStock(p.id, p.stock - p.qty)
+    })
     return response
 }
+
+
 
 export const writeOrder = (order:OrderResponseDto) => {
     const random = Math.floor(Math.random() * 10000)

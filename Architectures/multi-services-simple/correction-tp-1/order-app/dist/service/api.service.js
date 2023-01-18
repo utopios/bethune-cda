@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCustomer = exports.getProducts = void 0;
+exports.updateStock = exports.getCustomer = exports.getProducts = void 0;
 const axios_1 = __importDefault(require("axios"));
 const apiUris = {
     products: "http://localhost:8081",
@@ -32,3 +32,8 @@ const getCustomer = async (id) => {
     return response.data;
 };
 exports.getCustomer = getCustomer;
+const updateStock = async (id, newVal) => {
+    const response = await axios_1.default.patch(`${apiUris.products}/api/product/${id}/stock/${newVal}`);
+    return response.data;
+};
+exports.updateStock = updateStock;

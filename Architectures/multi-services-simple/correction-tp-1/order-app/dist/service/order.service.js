@@ -45,6 +45,10 @@ const createOrder = async (orderRequestDto) => {
         customer: customer
     };
     (0, exports.writeOrder)(response);
+    //Update du stock
+    response.products.forEach(p => {
+        (0, api_service_1.updateStock)(p.id, p.stock - p.qty);
+    });
     return response;
 };
 exports.createOrder = createOrder;

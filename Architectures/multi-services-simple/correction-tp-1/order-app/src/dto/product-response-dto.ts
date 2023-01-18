@@ -1,6 +1,6 @@
 export interface ProductResponseDTO {
-    id:Number,
+    id:number,
     name:String,
     price: Number,
-    stock:Number
+    stock:number
 }
