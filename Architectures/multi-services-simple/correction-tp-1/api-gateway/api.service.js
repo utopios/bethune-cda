@@ -1,5 +1,5 @@
 import axios from "axios";
-import { response } from "express";
+
 
 const dico = {
     "product": "http://localhost:8081/api/product",
@@ -9,8 +9,11 @@ const dico = {
 
 const getUrl = (api) => {
     const paths = api.split("/")
+    console.log(paths)
     const baseUrl = dico[paths[0]]
-    const urlApi  = baseUrl + "/" + paths.shift().join("/")
+    paths.shift()
+    console.log(paths)
+    const urlApi  = baseUrl + (paths.length > 0 ? ("/" + paths.join("/")) : "")
     return urlApi
 }
 
