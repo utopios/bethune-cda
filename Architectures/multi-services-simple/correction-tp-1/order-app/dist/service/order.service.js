@@ -49,7 +49,10 @@ const createOrder = async (orderRequestDto) => {
 };
 exports.createOrder = createOrder;
 const writeOrder = (order) => {
-    const random = Math.random() * 1000;
-    fs.writeFileSync(`orders/${random}.json`, JSON.stringify(order));
+    const random = Math.floor(Math.random() * 10000);
+    if (!fs.existsSync("orders")) {
+        fs.mkdirSync("orders");
+    }
+    fs.writeFileSync(`orders/${random}.json`, JSON.stringify(order), { encoding: 'utf-8', flag: 'w+' });
 };
 exports.writeOrder = writeOrder;

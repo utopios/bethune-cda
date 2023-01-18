@@ -22,7 +22,7 @@ public class CustomerController {
         return ResponseEntity.ok(_customerService.createCustomer(customerDTO));
     }
 
-    @GetMapping("{search}")
+    @GetMapping("search/{search}")
     public ResponseEntity<ResponseCustomerDTO> get(@PathVariable String search) {
         try {
             return ResponseEntity.ok(_customerService.getCustomer(search + "%"));
@@ -31,5 +31,13 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<ResponseCustomerDTO> get(@PathVariable int id) {
+        try {
+            return ResponseEntity.ok(_customerService.getCustomer(id));
+        }catch (NotFoundException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

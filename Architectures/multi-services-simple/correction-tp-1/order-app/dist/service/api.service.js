@@ -10,7 +10,7 @@ const apiUris = {
     customers: "http://localhost:8082",
 };
 const getProduct = async (id) => {
-    const response = await axios_1.default.get(`${apiUris.products}/api/products/${id}`);
+    const response = await axios_1.default.get(`${apiUris.products}/api/product/${id}`);
     return response.data;
 };
 const getProducts = async (ids) => {
@@ -28,7 +28,7 @@ const getProducts = async (ids) => {
 };
 exports.getProducts = getProducts;
 const getCustomer = async (id) => {
-    const response = await axios_1.default.get(`${apiUris.customers}/api/customers/${id}`);
+    const response = await axios_1.default.get(`${apiUris.customers}/api/customer/${id}`);
     return response.data;
 };
 exports.getCustomer = getCustomer;

@@ -5,6 +5,7 @@ import { ProductResponseDTO } from "~/dto/product-response-dto";
 import { WithQty } from "~/dto/with-qty";
 import { getCustomer, getProducts } from "./api.service";
 import * as fs from "fs"
+import ts from "typescript";
 export const createOrder = async(orderRequestDto:OrderRequestDto):Promise<OrderResponseDto|null> => {
     let response:OrderResponseDto|null = null
     const customer:CustomerResponseDTO = await getCustomer(orderRequestDto.customerId)
@@ -28,6 +29,9 @@ export const createOrder = async(orderRequestDto:OrderRequestDto):Promise<OrderR
 }
 
 export const writeOrder = (order:OrderResponseDto) => {
-    const random = Math.random() * 1000
-    fs.writeFileSync(`orders/${random}.json`,JSON.stringify(order))
+    const random = Math.floor(Math.random() * 10000)
+    if(!fs.existsSync("orders")){
+        fs.mkdirSync("orders")
+    }
+    fs.writeFileSync(`orders/${random}.json`,JSON.stringify(order), {encoding:'utf-8', flag:'w+'})
 }

@@ -10,4 +10,6 @@ public interface CustomerService {
     public ResponseCustomerDTO createCustomer(RequestCustomerDTO customerDTO);
 
     public ResponseCustomerDTO getCustomer(String search) throws NotFoundException;
+    public ResponseCustomerDTO getCustomer(int id) throws NotFoundException;
+
 }

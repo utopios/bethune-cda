@@ -32,4 +32,13 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return _modelMapper.map(customer, ResponseCustomerDTO.class);
     }
+
+    @Override
+    public ResponseCustomerDTO getCustomer(int id) throws NotFoundException {
+        Customer customer = _customerRepository.findById(id).get();
+        if(customer == null) {
+            throw new NotFoundException();
+        }
+        return _modelMapper.map(customer, ResponseCustomerDTO.class);
+    }
 }

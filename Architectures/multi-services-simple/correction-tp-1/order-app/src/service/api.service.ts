@@ -8,7 +8,7 @@ const apiUris = {
 }
 
 const getProduct = async (id:Number):Promise<ProductResponseDTO> => {
-    const response = await axios.get(`${apiUris.products}/api/products/${id}`)
+    const response = await axios.get(`${apiUris.products}/api/product/${id}`)
     return <ProductResponseDTO>response.data
 }
 
@@ -26,6 +26,6 @@ export const getProducts = async (ids:Number[]):Promise<ProductResponseDTO[]|nul
 }
 
 export const getCustomer = async (id:Number):Promise<CustomerResponseDTO> => {
-    const response = await axios.get(`${apiUris.customers}/api/customers/${id}`)
+    const response = await axios.get(`${apiUris.customers}/api/customer/${id}`)
     return <CustomerResponseDTO>response.data
 }
