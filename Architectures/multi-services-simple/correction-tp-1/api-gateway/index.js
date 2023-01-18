@@ -3,7 +3,7 @@
 // const { post } = require("./api.service")
 import express from "express"
 import cors from "cors"
-import { post } from "./api.service.js"
+import { post, get, patch } from "./api.service.js"
 
 const apis = [
     {
@@ -45,6 +45,22 @@ for (let i = 0; i < apis.length; i++) {
                     res.json(response.data)
                 })
                 break
+            case "get":
+                
+                app.get("/"+api+"/:"+apis[i][api].params.join("/:"), async (req, res) => {
+                    const response = await get(api+"/"+Object.values(req.params).join("/"))
+                    console.log(response)
+                    res.json(response.data)
+                })
+            break
+            case "patch":
+                
+                app.patch("/"+api+"/:"+apis[i][api].params.join("/:"), async (req, res) => {
+                    const response = await patch(api+"/"+Object.values(req.params).join("/"), {...req.body})
+                    console.log(response)
+                    res.json(response.data)
+                })
+            break
         }
     }
 }
