@@ -37,7 +37,7 @@ const createOrder = async (orderRequestDto) => {
             found.qty = found.qty + 1;
         }
         else {
-            products.push(Object.assign(Object.assign({}, found), { qty: 1 }));
+            products.push(Object.assign(Object.assign({}, element), { qty: 1 }));
         }
     });
     response = {

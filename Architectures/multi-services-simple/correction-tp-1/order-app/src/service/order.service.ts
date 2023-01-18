@@ -16,7 +16,7 @@ export const createOrder = async(orderRequestDto:OrderRequestDto):Promise<OrderR
         if(found != undefined) {
             found.qty = found.qty + 1
         }else {
-            products.push({...found!, qty:1})
+            products.push({...element!, qty:1})
         }
 
     });
