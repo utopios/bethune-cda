@@ -1,5 +1,14 @@
 version: '3.9'
 services:
+  angular:
+    build: 
+      context: bank-app-ui
+      args : ["rooturl=http://10.4.0.3:8080"]
+    ports:
+      - '8085:80'
+    networks:
+      bank_network:
+        ipv4_address: 10.4.0.4
   db:
     image: mysql
     environment:

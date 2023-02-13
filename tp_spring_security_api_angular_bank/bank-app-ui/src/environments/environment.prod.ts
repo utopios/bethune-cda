@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  rooturl: "http://10.4.0.3:8080"
 };

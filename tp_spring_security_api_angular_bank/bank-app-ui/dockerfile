@@ -1,0 +1,13 @@
+FROM node as build 
+
+WORKDIR /app
+
+COPY . .
+ARG rooturl
+RUN npm install 
+
+RUN npm run build
+
+FROM nginx:alpine
+
+COPY --from=build /app/dist/bank-app-ui /usr/share/nginx/html
