@@ -14,6 +14,10 @@ public class CalculatriceWindow {
     private GridBagLayout bagLayout;
     private GridBagConstraints bagConstraints;
 
+    private boolean isNewNumber = true;
+    private Double oldNumber = null;
+    private String lastOperation;
+
     private String[] buttons = new String[] {"C", "+/-", "%", "/", "7", "8", "9", "X", "4", "5", "6", "-", "1", "2", "3", "+", "0", ",", "="};
 
 
@@ -44,7 +48,33 @@ public class CalculatriceWindow {
 
     private void actionButton(ActionEvent e) {
         JButton b = (JButton) e.getSource();
-        blackScreen.setText(b.getText());
+        String content = b.getText();
+        try {
+            double number = Double.valueOf(content);
+            if(isNewNumber) {
+                blackScreen.setText(content);
+                isNewNumber = false;
+            }else {
+                blackScreen.setText(blackScreen.getText() + ""+content);
+            }
+        }catch (Exception ex) {
+            double number = Double.valueOf(blackScreen.getText());
+            if(oldNumber == null) {
+                oldNumber =number;
+            }
+            else {
+                switch (lastOperation) {
+                    case "+":
+                        oldNumber = oldNumber + number;
+                        break;
+                }
+                blackScreen.setText(oldNumber.toString());
+            }
+            lastOperation = content;
+            isNewNumber = true;
+
+        }
+
     }
     private void createButton() {
         int x = 0;
