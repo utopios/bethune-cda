@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.example.window.FirstWindow">
+  <grid id="27dc6" binding="firstPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="8f295" class="javax.swing.JButton" binding="firstButton">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <text value="First Button"/>
+        </properties>
+      </component>
+      <component id="1be6b" class="javax.swing.JRadioButton" binding="radioButton1" default-binding="true">
+        <constraints border-constraint="East"/>
+        <properties>
+          <text value="RadioButton"/>
+        </properties>
+      </component>
+      <component id="52331" class="javax.swing.JButton" binding="button2" default-binding="true">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Button"/>
+        </properties>
+      </component>
+      <component id="f4493" class="javax.swing.JButton" binding="button3" default-binding="true">
+        <constraints border-constraint="South"/>
+        <properties>
+          <text value="Button"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
