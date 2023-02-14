@@ -42,19 +42,24 @@ public class FirstWindow {
         g.columnWidths = new int[6];
         g.rowHeights = new int[6];
         firstPanel.setLayout(new GridBagLayout());
-        for(int i=1; i <= 3; i++) {
-            for(int j=1; j <= 3; j++) {
+        for(int i=0; i < 3; i++) {
+            for(int j=0; j < 3; j++) {
                 JButton b = new JButton("b" + i+ " X "+j);
                 GridBagConstraints c = new GridBagConstraints();
-                c.fill = GridBagConstraints.HORIZONTAL;
+                //c.fill = GridBagConstraints.HORIZONTAL;
                 c.gridy = j;
                 c.gridx = i;
-                if(i%2 == 0) {
+                c.weightx = 1;
+                c.weighty = 1;
+                c.fill = GridBagConstraints.BOTH;
+                if(i == 0 && j == 0) {
                     c.gridwidth = 2;
+                    //c.fill = GridBagConstraints.HORIZONTAL;
                 }
-                /*else {
+                if(i==1 && j ==1) {
                     c.gridheight = 2;
-                }*/
+                    //c.fill = GridBagConstraints.VERTICAL;
+                }
 
                 b.addActionListener((e) -> {
                     System.out.println(((JButton)e.getSource()).getText());
