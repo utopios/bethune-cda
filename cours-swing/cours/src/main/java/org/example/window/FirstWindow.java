@@ -60,7 +60,7 @@ public class FirstWindow {
                     c.gridheight = 2;
                     //c.fill = GridBagConstraints.VERTICAL;
                 }
-
+                b.setBackground(Color.BLACK);
                 b.addActionListener((e) -> {
                     System.out.println(((JButton)e.getSource()).getText());
                 });
