@@ -1,0 +1,34 @@
+.example-card {
+  max-width: 350px;
+}
+
+
+.threeGrid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px;
+}
+
+.buttons {
+  margin-right: 20px;
+}
+
+p{
+  color: #8A64D6
+;
+}
+
+.text-color {
+  color:#8A64D6;
+}
+
+.update-button {
+  background: #99A4BF;
+}
+
+.delete-button
+{
+  background: #F8BBA6;
+}
+
+

@@ -1,0 +1,50 @@
+/*.text-color {*/
+/*  color: #99A4BF;*/
+/*}*/
+/*p {*/
+/*  font-size: 17px;*/
+/*}*/
+
+.container-fluid {
+  height: 90vh;
+  margin-right: 0;
+  margin-left: 0;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+
+.container-content
+{
+  position: absolute;
+  top: 60%;
+  left : 50%;
+  transform: translate(-50%, -50%);
+
+
+
+}
+
+.container-title {
+
+  text-align: center;
+  line-height: 60px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 75%;
+
+
+
+
+}
+
+.title-word {
+  color: darkred;
+}
+.title-word-1 {
+  color: yellow;
+
+}

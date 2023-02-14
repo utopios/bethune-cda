@@ -1,0 +1,124 @@
+<div class="container">
+
+  <form #eventForm="ngForm" (ngSubmit)="updateEvent()" novalidate>
+
+    <div class="form-group example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter event name</mat-label>
+        <input type="text" class=form-control matInput
+               id="name"
+               name="eventName"
+               [(ngModel)]="event.eventName"
+               #eventName="ngModel"
+               placeholder="Enter event name here"
+               required>
+        <mat-error *ngIf="eventName.errors?.['required']">Event name is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="form-group example-container">
+      <p>If you want to change the event photo, click on the check box </p>
+      <input type="checkbox" class="example-margin" (change)="toggleEditable($event)" id="changeEventPhoto" name="changeEventPhoto">
+      <label for="changeEventPhoto">Do you want to change the event photo?</label>
+    </div>
+
+
+
+    <div class="form-group example-container" *ngIf="showChangeEventPhotoInput">
+      <label>Add event photo</label>
+      <input type="file" class=form-control
+             id="eventPhotoUrl"
+             name="eventPhotoUrl"
+             [(ngModel)]="event.eventPhotoUrl"
+             (change)="onFileChange($event)"
+             placeholder="Enter event photo here">
+    </div>
+
+    <div class="form-group example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter event description</mat-label>
+        <input type="text" class=form-control matInput
+               id="eventDescription"
+               name="eventDescription"
+               [(ngModel)]="event.eventDescription"
+               placeholder="Enter event description here">
+      </mat-form-field>
+    </div>
+
+
+    <div class="form-group example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter event city</mat-label>
+        <input type="text" class=form-control matInput
+               id="eventCity"
+               name="eventCity"
+               [(ngModel)]="event.eventCity"
+               #eventCity="ngModel"
+               placeholder="Enter event city here"
+               required>
+        <mat-error *ngIf="eventCity.errors?.['required']">Event city is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="form-group example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter event country</mat-label>
+        <input type="text" class=form-control matInput
+               id="eventCountry"
+               name="eventCountry"
+               [(ngModel)]="event.eventCountry"
+               #eventCountry="ngModel"
+               placeholder="Enter event country here"
+               required>
+        <mat-error *ngIf="eventCountry.errors?.['required']">Event country is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker"
+               id="eventDate"
+               name="eventDate"
+               [(ngModel)]="event.eventDate"
+               #eventDate="ngModel"
+               required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <!--        // connecting toogle button with the input with sufix for -->
+        <mat-datepicker #picker></mat-datepicker>
+        <!--        date picker is this-->
+        <mat-error *ngIf="eventDate.errors?.['required']">Event date is required</mat-error>
+
+      </mat-form-field>
+    </div>
+
+
+
+
+    <div class="form-group example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter event registration link</mat-label>
+        <input type="text" class=form-control matInput
+               id="eventRegistrationLink"
+               name="eventRegistrationLink"
+               [(ngModel)]="event.eventRegistrationLink"
+               #eventRegistrationLink="ngModel"
+               placeholder="Enter event registration link here"
+               required>
+        <mat-error *ngIf="eventRegistrationLink.errors?.['required']">Event registration link is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <button type="submit" mat-raised-button class="button-color" [disabled]="eventForm.invalid" >Update event</button>
+
+
+  </form>
+
+
+
+
+</div>

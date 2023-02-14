@@ -1,0 +1,30 @@
+<div class="row">
+  <button mat-raised-button  class="update-button" (click)="navigateToAddEventPage()">Add event </button>
+</div>
+
+<br>
+<div class="threeGrid">
+
+  <div *ngFor="let event of events">
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="text-color">{{event.eventName}}</mat-card-title>
+        <mat-card-subtitle class="text-color">{{event.eventDescription}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{event.eventPhotoUrl}}">
+      <mat-card-content>
+        <p><b>Event city: </b>{{event.eventCity}}</p>
+        <p><b>Event country: </b> {{event.eventCountry}}</p>
+        <p><b>Event date: </b>{{event.eventDate.toString().substring(0,10)}}</p>
+        <a href="{{event.eventRegistrationLink}}" target="_blank">Click on the link to register for the race</a>
+      </mat-card-content>
+      <button mat-raised-button  class="buttons update-button" (click)="updateEvent(event.eventId)">Edit</button>
+      <button mat-raised-button  class="buttons delete-button" (click)="deleteEvent(event.eventId)">Delete</button>
+    </mat-card>
+
+
+  </div>
+
+</div>
+

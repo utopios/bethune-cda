@@ -1,0 +1,39 @@
+<div class="main d-flex flex-column justify-content-center">
+  <div class="d-flex flex-row justify-content-center">
+    <div class="input-group mb-3 w-50 ">
+      <input type="text" class="form-control w-50" placeholder="Recherche course par ville"
+        aria-label="Recipient's username" aria-describedby="button-addon2" type="text" name="search "
+        [(ngModel)]="searchText" autocomplete="off">
+      <button class="btn btn-primary" type="button" id="button-addon2" (click)="searchByCity(searchText)">Search
+        City</button>
+    </div>
+  </div>
+
+  <div class="threeGrid gap-4">
+    <div *ngFor="let event of events">
+      <div *ngIf="!eventInCityNotExistMessage">
+        <mat-card class="example-card mt-3">
+          <mat-card-header>
+            <mat-card-title class="text-color">{{event.eventName}}</mat-card-title>
+            <mat-card-subtitle class="text-color">{{event.eventDescription}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{event.eventPhotoUrl}}">
+          <mat-card-content>
+            <p><b>Event city: </b>{{event.eventCity}}</p>
+            <p><b>Event country: </b> {{event.eventCountry}}</p>
+            <p><b>Event date: </b>{{event.eventDate.toString().substring(0,10)}}</p>
+            <a href="{{event.eventRegistrationLink}}" target="_blank">Click on the link to register for the race</a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <div *ngIf="eventInCityNotExistMessage" class="error-style">
+    <h2>There are no events in this city yet!</h2>
+  </div>
+</div>
