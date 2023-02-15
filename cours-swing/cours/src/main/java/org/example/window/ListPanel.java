@@ -16,12 +16,20 @@ public class ListPanel {
     private GridLayout gridLayout;
     private ArrayList<String> data = new ArrayList<>();
 
+    private JTable jTable;
     private JTextField textField;
     private JButton button;
+    private String[][] dataTable = new String[][]{
+            {"toto", "tata", "20"},
+            {"titi", "minet", "30"},
+
+    };
     public  ListPanel() {
         data.add("toto");
         data.add("titit");
         textField = new JTextField();
+        jTable = new JTable(dataTable, new String[] {"nom", "prenom", "age"});
+        jTable.setBounds(10,10,300,300);
         button = new JButton("Ajouter");
         button.addActionListener((e) -> {
             data.add(textField.getText());
@@ -37,5 +45,6 @@ public class ListPanel {
         mainPanel.add(textField);
         mainPanel.add(button);
         mainPanel.add(demoList);
+        mainPanel.add(jTable);
     }
 }
