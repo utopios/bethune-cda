@@ -1,6 +1,9 @@
 package org.example.window;
 
+import com.example.tphopital.entity.Patient;
+import com.example.tphopital.exception.StringFormatException;
 import lombok.Data;
+import org.example.adapter.PatientModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,12 +27,12 @@ public class ListPanel {
             {"titi", "minet", "30"},
 
     };
-    public  ListPanel() {
+    public  ListPanel() throws StringFormatException {
         data.add("toto");
         data.add("titit");
         textField = new JTextField();
-        jTable = new JTable(dataTable, new String[] {"nom", "prenom", "age"});
-        jTable.setBounds(10,10,300,300);
+
+
         button = new JButton("Ajouter");
         button.addActionListener((e) -> {
             data.add(textField.getText());
@@ -45,6 +48,19 @@ public class ListPanel {
         mainPanel.add(textField);
         mainPanel.add(button);
         mainPanel.add(demoList);
-        mainPanel.add(jTable);
+        //JTable
+        //jTable = new JTable(dataTable, new String[] {"nom", "prenom", "age"});
+        //mainPanel.add( new JScrollPane(jTable));
+        //Jtable avec model
+        jTable = new JTable();
+        Patient p1 = new Patient();
+        p1.setNom("toto");
+        p1.setPrenom("titi");
+        ArrayList<Patient> patients = new ArrayList<>();
+        patients.add(p1);
+        PatientModel model = new PatientModel(patients);
+        jTable.setModel(model);
+
+        mainPanel.add( new JScrollPane(jTable));
     }
 }

@@ -1,5 +1,6 @@
 package org.example;
 
+import com.example.tphopital.exception.StringFormatException;
 import org.example.hopital.PatientPanel;
 import org.example.window.CalculatriceWindow;
 import org.example.window.FirstWindow;
@@ -10,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws StringFormatException {
         //Création d'une Frame
         /*JFrame mainFrame = new JFrame("La première frame");
         mainFrame.setSize(new Dimension(1000,1000));
