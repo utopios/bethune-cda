@@ -11,12 +11,53 @@ import java.util.Random;
 public class TaquinWindow {
     private int size = 3;
     private JPanel taquinPanel;
+
+    private JButton startButton;
+    private JTextField textField;
+    private JLabel headerLabel;
+    private FlowLayout flowLayout;
+    private JPanel headerPanel;
+
+    private JPanel mainPanel;
     private GridBagLayout gridBagLayout;
+
+    private GridLayout gridLayout;
     private GridBagConstraints gridBagConstraints;
 
-    private int[] numbers = new int[(size*size)-1];
+    private int[] numbers;
 
     public TaquinWindow() {
+        gridLayout = new GridLayout(2, 1);
+        mainPanel.setLayout(gridLayout);
+        mainPanel.setSize(500,500);
+        createHeader();
+        createTaquin();
+
+    }
+
+    private void createHeader() {
+        flowLayout = new FlowLayout();
+        headerPanel = new JPanel();
+        headerPanel.setLayout(flowLayout);
+        headerLabel = new JLabel("Taille du jeu");
+        textField = new JTextField();
+        textField.setSize(300,10);
+        startButton = new JButton("Démarrer");
+        startButton.addActionListener((e) -> {
+            size = Integer.valueOf(textField.getText());
+            mainPanel.remove(taquinPanel);
+            createTaquin();
+            mainPanel.validate();
+        });
+        headerPanel.add(headerLabel);
+        headerPanel.add(textField);
+        headerPanel.add(startButton);
+        mainPanel.add(headerPanel);
+    }
+
+    private void createTaquin() {
+        numbers = new int[(size*size)-1];
+        taquinPanel = new JPanel();
         gridBagLayout = new GridBagLayout();
         taquinPanel.setLayout(gridBagLayout);
         for(int i=1; i < size*size; i++) {
@@ -25,6 +66,7 @@ public class TaquinWindow {
         gridBagConstraints = new GridBagConstraints();
         shuffle();
         createButton();
+        mainPanel.add(taquinPanel);
     }
 
     private void shuffle() {

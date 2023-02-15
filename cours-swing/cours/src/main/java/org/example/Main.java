@@ -20,8 +20,8 @@ public class Main {
         calcuatriceFrame.setVisible(true);*/
 
         JFrame taquinFrame = new JFrame("Taquin ios");
-        taquinFrame.setSize(new Dimension(300,300));
-        taquinFrame.setContentPane(new TaquinWindow().getTaquinPanel());
+        taquinFrame.setSize(new Dimension(400,400));
+        taquinFrame.setContentPane(new TaquinWindow().getMainPanel());
         taquinFrame.setVisible(true);
     }
 }
