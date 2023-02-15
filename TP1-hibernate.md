@@ -8,7 +8,7 @@ On souhaite implémenter l'ensemble des classes du diagramme suivant:
 Voici les fonctionnalités demandées :
 
 1. Créer un dossier medical.
-    1. Ajouter un patient.
+    1. Ajouter un patient. ![TP1](TP-hopital.png "TP 1-1")
 2. Créer une consultation.
     1. Créer la fiche de consultation.
     2. Ajouter une prescription.
