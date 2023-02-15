@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.hopital.PatientPanel;
 import org.example.window.CalculatriceWindow;
 import org.example.window.FirstWindow;
 import org.example.window.TaquinWindow;
@@ -19,9 +20,13 @@ public class Main {
         calcuatriceFrame.setContentPane(new CalculatriceWindow().getCalculatricePanel());
         calcuatriceFrame.setVisible(true);*/
 
-        JFrame taquinFrame = new JFrame("Taquin ios");
+        /*JFrame taquinFrame = new JFrame("Taquin ios");
         taquinFrame.setSize(new Dimension(400,400));
         taquinFrame.setContentPane(new TaquinWindow().getMainPanel());
-        taquinFrame.setVisible(true);
+        taquinFrame.setVisible(true);*/
+        JFrame patientFrame = new JFrame("Patient");
+        patientFrame.setSize(new Dimension(500,5000));
+        patientFrame.setContentPane(new PatientPanel().getMainPanel());
+        patientFrame.setVisible(true);
     }
 }
