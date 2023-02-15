@@ -9,7 +9,7 @@ import java.io.Serializable;
 public abstract class BaseRepository<T> implements IRepository<T> {
     protected Transaction _transaction;
     protected BaseRepository() {
-
+        _transaction = HibernateSession.getInstance().beginTransaction();
     }
     protected BaseRepository(Transaction transaction) {
         _transaction = transaction;

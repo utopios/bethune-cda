@@ -1,5 +1,7 @@
 package org.example.hopital;
 
+import com.example.tphopital.entity.Patient;
+import com.example.tphopital.exception.StringFormatException;
 import com.example.tphopital.repository.impl.PatientRepository;
 import com.example.tphopital.service.PatientService;
 import com.toedter.calendar.JCalendar;
@@ -17,6 +19,7 @@ public class PatientPanel {
 
     private JPanel formPanel;
 
+    private JPanel boutonPanel;
     private JPanel radioPanel;
     private GridBagLayout formGridLayout;
     private GridBagConstraints formBagConstraints;
@@ -53,6 +56,22 @@ public class PatientPanel {
 
         createLabelForm();
         createFieldForm();
+        createButton();
+    }
+
+    private void createButton() {
+        boutonPanel = new JPanel();
+        boutonPanel.setLayout(new GridLayout());
+        mainPanel.add(boutonPanel);
+        Button button = new Button("Enregister");
+        button.addActionListener((e) -> {
+            try {
+                savePatient();
+            } catch (StringFormatException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        boutonPanel.add(button);
     }
 
     private void createLabelForm() {
@@ -98,6 +117,17 @@ public class PatientPanel {
         formBagConstraints.gridy = 4;
         formBagConstraints.fill = GridBagConstraints.CENTER;
         formPanel.add(radioPanel, formBagConstraints);
+    }
+
+    private void savePatient() throws StringFormatException {
+        Patient patient = new Patient();
+        patient.setNss(codeTextField.getText());
+        patient.setNom(nomTextField.getText());
+        patient.setAdresse(adresseTextArea.getText());
+        patientRepository.create(patient);
+        JDialog d = new JDialog();
+        d.add(new Label("Patient ajouté"));
+        d.setVisible(true);
     }
 
 }
