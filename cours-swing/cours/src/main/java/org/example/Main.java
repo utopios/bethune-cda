@@ -3,6 +3,7 @@ package org.example;
 import org.example.hopital.PatientPanel;
 import org.example.window.CalculatriceWindow;
 import org.example.window.FirstWindow;
+import org.example.window.ListPanel;
 import org.example.window.TaquinWindow;
 
 import javax.swing.*;
@@ -26,7 +27,7 @@ public class Main {
         taquinFrame.setVisible(true);*/
         JFrame patientFrame = new JFrame("Patient");
         patientFrame.setSize(new Dimension(500,5000));
-        patientFrame.setContentPane(new PatientPanel().getMainPanel());
+        patientFrame.setContentPane(new ListPanel().getMainPanel());
         patientFrame.setVisible(true);
     }
 }
