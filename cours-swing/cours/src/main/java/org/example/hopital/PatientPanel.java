@@ -1,9 +1,10 @@
 package org.example.hopital;
 
+import com.example.tphopital.repository.impl.PatientRepository;
+import com.example.tphopital.service.PatientService;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import lombok.Data;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
@@ -27,9 +28,11 @@ public class PatientPanel {
     private JRadioButton fRadio;
     private JDateChooser calendar;
 
+    private PatientRepository patientRepository;
     private List<String> labels = Arrays.asList("CODE", "NOM", "ADRESSE", "DATE DE NAISSANCE", "SEXE");
 
     public PatientPanel() {
+        patientRepository = new PatientRepository();
         init();
     }
 
