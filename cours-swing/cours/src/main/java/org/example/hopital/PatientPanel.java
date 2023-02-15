@@ -9,6 +9,7 @@ import com.toedter.calendar.JDateChooser;
 import lombok.Data;
 import javax.swing.*;
 import java.awt.*;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,15 +28,19 @@ public class PatientPanel {
     private JTextField codeTextField;
     private JTextField nomTextField;
     private JTextArea adresseTextArea;
+
+    private ButtonGroup buttonGroup;
     private JRadioButton mRadio;
     private JRadioButton fRadio;
     private JDateChooser calendar;
 
     private PatientRepository patientRepository;
+    private PatientService patientService;
     private List<String> labels = Arrays.asList("CODE", "NOM", "ADRESSE", "DATE DE NAISSANCE", "SEXE");
 
     public PatientPanel() {
         patientRepository = new PatientRepository();
+        patientService = new PatientService(patientRepository);
         init();
     }
 
@@ -68,6 +73,8 @@ public class PatientPanel {
             try {
                 savePatient();
             } catch (StringFormatException ex) {
+                throw new RuntimeException(ex);
+            } catch (ParseException ex) {
                 throw new RuntimeException(ex);
             }
         });
@@ -108,10 +115,13 @@ public class PatientPanel {
         formPanel.add(calendar, formBagConstraints);
 
         radioPanel = new JPanel();
+        buttonGroup = new ButtonGroup();
+
         fRadio = new JRadioButton("f");
         mRadio = new JRadioButton("m");
         radioPanel.setLayout(new FlowLayout());
-
+        buttonGroup.add(fRadio);
+        buttonGroup.add(mRadio);
         radioPanel.add(fRadio);
         radioPanel.add(mRadio);
         formBagConstraints.gridy = 4;
@@ -119,12 +129,12 @@ public class PatientPanel {
         formPanel.add(radioPanel, formBagConstraints);
     }
 
-    private void savePatient() throws StringFormatException {
+    private void savePatient() throws StringFormatException, ParseException {
         Patient patient = new Patient();
         patient.setNss(codeTextField.getText());
         patient.setNom(nomTextField.getText());
         patient.setAdresse(adresseTextArea.getText());
-        patientRepository.create(patient);
+        patientService.add(nomTextField.getText(),"rzer", "01010101", adresseTextArea.getText(), codeTextField.getText(), calendar.getDate().toString(), fRadio.isSelected() ? "F": "H");
         JDialog d = new JDialog();
         d.add(new Label("Patient ajouté"));
         d.setVisible(true);
