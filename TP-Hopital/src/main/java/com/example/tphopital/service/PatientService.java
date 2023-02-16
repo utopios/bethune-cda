@@ -1,13 +1,15 @@
 package com.example.tphopital.service;
 
+
 import com.example.tphopital.entity.Patient;
 import com.example.tphopital.exception.StringFormatException;
 import com.example.tphopital.repository.impl.BaseRepository;
 import com.example.tphopital.repository.impl.PatientRepository;
 import com.example.tphopital.util.HibernateSession;
-
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class PatientService {
@@ -31,5 +33,9 @@ public class PatientService {
         Date dateN = new SimpleDateFormat("yyyy-mm-dd").parse(dateNaissance);
         patient.setDateNaissance(dateN);
         return _patientRepository.create(patient);
+    }
+
+    public List<Patient> getAll() {
+        return _patientRepository.findAll();
     }
 }
