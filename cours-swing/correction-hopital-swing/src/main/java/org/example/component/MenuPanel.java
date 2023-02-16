@@ -24,20 +24,24 @@ public class MenuPanel {
 
     private void createMenu() {
         jMenuBar = new JMenuBar();
-        JMenu homeMenu = new JMenu(new LinkAction("Accueil", (e) -> {
+        JMenu mainMenu = new JMenu("Menu");
+
+        JMenuItem homeMenu = new JMenuItem(new LinkAction("Accueil", (e) -> {
             _frame.setContentPane(new HomePanel(_frame).getMainPanel());
             _frame.revalidate();
             System.out.println("test");
             return null;
         }));
 
-        jMenuBar.add(homeMenu);
-        JMenu formMenu = new JMenu(new LinkAction("formulaire", (e) -> {
+        mainMenu.add(homeMenu);
+        JMenuItem formMenu = new JMenuItem(new LinkAction("formulaire", (e) -> {
             _frame.setContentPane(new FormPatientPanel(_frame).getMainPanel());
+            _frame.revalidate();
             return null;
         }));
 
-        jMenuBar.add(formMenu);
+        mainMenu.add(formMenu);
+        jMenuBar.add(mainMenu);
         _frame.setJMenuBar(jMenuBar);
     }
 }
