@@ -3,6 +3,7 @@ package org.example.component;
 import lombok.Data;
 import org.example.window.FormPatientPanel;
 import org.example.window.HomePanel;
+import org.example.window.ListPatientPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -41,6 +42,14 @@ public class MenuPanel {
         }));
 
         mainMenu.add(formMenu);
+
+        JMenuItem listMenu = new JMenuItem(new LinkAction("Liste Patient", (e) -> {
+            _frame.setContentPane(new ListPatientPanel(_frame).getMainPanel());
+            _frame.revalidate();
+            return null;
+        }));
+
+        mainMenu.add(listMenu);
         jMenuBar.add(mainMenu);
         _frame.setJMenuBar(jMenuBar);
     }

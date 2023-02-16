@@ -17,5 +17,9 @@ public class HomePanel {
             _frame.setContentPane(new FormPatientPanel(frame).getMainPanel());
             _frame.revalidate();
         });
+        listPatientButton.addActionListener((e) -> {
+            _frame.setContentPane(new ListPatientPanel(frame).getMainPanel());
+            _frame.revalidate();
+        });
     }
 }

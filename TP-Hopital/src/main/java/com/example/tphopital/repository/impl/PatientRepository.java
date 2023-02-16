@@ -1,7 +1,10 @@
 package com.example.tphopital.repository.impl;
 
 import com.example.tphopital.entity.Patient;
+import com.example.tphopital.util.HibernateSession;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -25,7 +28,11 @@ public class PatientRepository extends BaseRepository<Patient> {
 
     @Override
     public List<Patient> findAll() {
-        return null;
+
+        Session session = HibernateSession.getInstance();
+        //CriteriaBuilder cb = session.getCriteriaBuilder();
+        Query<Patient> query = session.createQuery("from Patient ");
+        return query.getResultList();
     }
 
     @Override
