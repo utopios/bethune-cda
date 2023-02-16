@@ -4,6 +4,7 @@ import com.example.tphopital.entity.Patient;
 import com.example.tphopital.exception.StringFormatException;
 import lombok.Data;
 import org.example.adapter.PatientModel;
+import org.example.util.RestClient;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,9 +57,13 @@ public class ListPanel {
         Patient p1 = new Patient();
         p1.setNom("toto");
         p1.setPrenom("titi");
-        ArrayList<Patient> patients = new ArrayList<>();
+        List<Patient> patients = new ArrayList<>();
         patients.add(p1);
-        PatientModel model = new PatientModel(patients);
+
+        //Récupérer la liste des patients à partir d'une api
+        RestClient<Patient[],Patient> restClient = new RestClient<>();
+        patients = Arrays.stream(restClient.get("/patients", Patient[].class)).toList();
+        PatientModel model = new PatientModel((ArrayList<Patient>) patients);
         jTable.setModel(model);
 
         mainPanel.add( new JScrollPane(jTable));
