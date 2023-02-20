@@ -18,8 +18,11 @@ public class FormProductPanel {
     private JButton addButton;
     private JButton updateButton;
     private JButton findButton;
+    private JButton nextButton;
+    private JButton previewButton;
     private JFrame _frame;
     private ProductService productService;
+    private ResponseProductDTO responseProductDTO;
     public FormProductPanel(JFrame frame) {
         _frame = frame;
         productService = new ProductService();
@@ -44,13 +47,46 @@ public class FormProductPanel {
         });
 
         findButton.addActionListener((e) -> {
-            ResponseProductDTO responseProductDTO = productService.getById(Integer.valueOf(productIdTextField.getText()));
+            responseProductDTO = productService.getById(Integer.valueOf(productIdTextField.getText()));
             if(responseProductDTO != null) {
                 nameTextField.setText(responseProductDTO.getName());
                 priceTextField.setText(String.valueOf(responseProductDTO.getPrice()));
                 stockTextField.setText(String.valueOf(responseProductDTO.getStock()));
             }
         });
+
+        updateButton.addActionListener((e) -> {
+            if(responseProductDTO != null) {
+                if(!stockTextField.getText().equals(String.valueOf(responseProductDTO.getStock()))) {
+                    responseProductDTO = productService.patch(responseProductDTO.getId(), "stock", stockTextField.getText());
+                }
+            }
+        });
+
+        nextButton.addActionListener((e) -> {
+            if(responseProductDTO != null) {
+                responseProductDTO = productService.getById(responseProductDTO.getId() + 1);
+                if(responseProductDTO != null) {
+                    productIdTextField.setText(String.valueOf(responseProductDTO.getId()));
+                    nameTextField.setText(responseProductDTO.getName());
+                    priceTextField.setText(String.valueOf(responseProductDTO.getPrice()));
+                    stockTextField.setText(String.valueOf(responseProductDTO.getStock()));
+                }
+            }
+        });
+
+        previewButton.addActionListener((e) -> {
+            if(responseProductDTO != null) {
+                responseProductDTO = productService.getById(responseProductDTO.getId() - 1);
+                if(responseProductDTO != null) {
+                    productIdTextField.setText(String.valueOf(responseProductDTO.getId()));
+                    nameTextField.setText(responseProductDTO.getName());
+                    priceTextField.setText(String.valueOf(responseProductDTO.getPrice()));
+                    stockTextField.setText(String.valueOf(responseProductDTO.getStock()));
+                }
+            }
+        });
+
     }
 
 }
