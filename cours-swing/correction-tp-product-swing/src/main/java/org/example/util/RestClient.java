@@ -5,7 +5,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 public class RestClient<T,V> {
-    private String server = "http://localhost:8082/";
+    private String server = "http://localhost:8081/";
     private RestTemplate template;
     private HttpHeaders headers;
     private HttpStatusCode status;
