@@ -34,7 +34,22 @@ public class FormProductPanel {
                     .stock(Integer.valueOf(stockTextField.getText()))
                     .build();
             ResponseProductDTO responseProductDTO = productService.add(productDTO);
-            productIdTextField.setText(String.valueOf(responseProductDTO.getId()));
+            if(responseProductDTO != null) {
+                productIdTextField.setText(String.valueOf(responseProductDTO.getId()));
+                nameTextField.setText(null);
+                priceTextField.setText(null);
+                stockTextField.setText(null);
+            }
+
+        });
+
+        findButton.addActionListener((e) -> {
+            ResponseProductDTO responseProductDTO = productService.getById(Integer.valueOf(productIdTextField.getText()));
+            if(responseProductDTO != null) {
+                nameTextField.setText(responseProductDTO.getName());
+                priceTextField.setText(String.valueOf(responseProductDTO.getPrice()));
+                stockTextField.setText(String.valueOf(responseProductDTO.getStock()));
+            }
         });
     }
 
