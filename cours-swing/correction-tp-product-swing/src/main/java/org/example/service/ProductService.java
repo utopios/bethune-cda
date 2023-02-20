@@ -15,7 +15,7 @@ public class ProductService {
        return (ResponseProductDTO) _restClient.get("/api/product/"+id, ResponseProductDTO.class);
     }
 
-    public ResponseProductDTO add(ResponseProductDTO productDTO) {
+    public ResponseProductDTO add(RequestProductDTO productDTO) {
         return (ResponseProductDTO) _restClient.post("/api/product", productDTO, ResponseProductDTO.class);
     }
 
