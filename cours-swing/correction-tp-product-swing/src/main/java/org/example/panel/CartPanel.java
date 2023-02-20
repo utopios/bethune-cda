@@ -5,8 +5,6 @@ import org.example.dto.ResponseProductDTO;
 import org.example.service.ProductService;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 @Data
 public class CartPanel {
@@ -19,6 +17,7 @@ public class CartPanel {
     private JPanel buttonPanel;
     private JButton addButton;
     private JTable cartTable;
+    private JButton searchButton;
 
     private ResponseProductDTO responseProductDTO;
     private ProductService productService;
@@ -33,6 +32,13 @@ public class CartPanel {
         productIdTextField.addActionListener((e) -> {
             System.out.println(productIdTextField.getText());
         });
+        searchButton.addActionListener((e) -> {
+            responseProductDTO = productService.getById(Integer.valueOf(productIdTextField.getText()));
+            if(responseProductDTO != null) {
+                nameProductLabel.setText(responseProductDTO.getName());
+                priceProductLabel.setText(String.valueOf(responseProductDTO.getPrice()));
 
+            }
+        });
     }
 }
