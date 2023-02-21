@@ -2,6 +2,7 @@ package com.example.cours;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,6 +24,9 @@ public class CalculatriceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculatrice);
         calculatriceLayout = findViewById(R.id.calculatrice_table);
         screen = findViewById(R.id.screen);
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("message");
+        setTitle(message);
         generateTable();
     }
 
