@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.cours.databinding.FragmentFirstBinding;
@@ -38,7 +39,9 @@ public class FirstFragment extends Fragment {
         });
 
         binding.toDemoButton.setOnClickListener((e) -> {
-            NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_DemoFragment);
+            NavDirections action = FirstFragmentDirections.actionFirstFragmentToDemoFragment();
+            //NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_DemoFragment);
+            NavHostFragment.findNavController(FirstFragment.this).navigate(action);
         });
     }
 
