@@ -27,8 +27,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
     </fragment>
     <fragment android:id="@+id/DemoFragment" android:name="com.example.cours.DemoFragment" android:label="Demo fragment" tools:layout="@layout/fragment_demo">
-
+        <argument android:name="title" app:argType="string" android:defaultValue="toto"></argument>
     </fragment>
 </navigation>

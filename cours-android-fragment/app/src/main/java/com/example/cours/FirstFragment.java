@@ -39,7 +39,7 @@ public class FirstFragment extends Fragment {
         });
 
         binding.toDemoButton.setOnClickListener((e) -> {
-            NavDirections action = FirstFragmentDirections.actionFirstFragmentToDemoFragment();
+            NavDirections action = FirstFragmentDirections.actionFirstFragmentToDemoFragment().setTitle("ihab");
             //NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_DemoFragment);
             NavHostFragment.findNavController(FirstFragment.this).navigate(action);
         });
