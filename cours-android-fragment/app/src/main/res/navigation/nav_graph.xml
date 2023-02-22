@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ListFragment">
+    app:startDestination="@id/FormFragment">
     <fragment android:id="@+id/ListFragment" android:name="com.example.cours.ListFragment" android:label="liste" tools:layout="@layout/fragment_list"></fragment>
     <fragment
         android:id="@+id/FirstFragment"
@@ -31,8 +31,14 @@
     </fragment>
     <fragment android:id="@+id/FormFragment" android:name="com.example.cours.FormFragment" android:label="Formulaire" tools:layout="@layout/fragment_form">
         <action android:id="@+id/action_from_to_detail" app:destination="@id/DetailFragment"></action>
+        <action android:id="@+id/action_form_to_list" app:destination="@id/ListContactFragment"></action>
     </fragment>
     <fragment android:id="@+id/DetailFragment" android:name="com.example.cours.DetailFragment" android:label="Detail" tools:layout="@layout/fragment_detail">
+        <argument android:name="firstname" app:argType="string"></argument>
+        <argument android:name="lastname" app:argType="string"></argument>
+        <argument android:name="phone" app:argType="string"></argument>
+    </fragment>
+    <fragment android:id="@+id/ListContactFragment" android:name="com.example.cours.ListContactFragment" android:label="Liste contacts" tools:layout="@layout/fragment_list_contact">
         <argument android:name="firstname" app:argType="string"></argument>
         <argument android:name="lastname" app:argType="string"></argument>
         <argument android:name="phone" app:argType="string"></argument>

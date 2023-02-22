@@ -44,8 +44,11 @@ public class FormFragment extends Fragment {
     //Après la création de la view du fragment
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         binding.validButton.setOnClickListener((e) -> {
-            FormFragmentDirections.ActionFromToDetail action = FormFragmentDirections.actionFromToDetail(binding.firstnameEdittext.getText().toString(), binding.lastnameEdittext.getText().toString(), binding.phoneEdittext.getText().toString());
+            FormFragmentDirections.ActionFormToList action = FormFragmentDirections.actionFormToList(binding.firstnameEdittext.getText().toString(), binding.lastnameEdittext.getText().toString(), binding.phoneEdittext.getText().toString());
             NavHostFragment.findNavController(FormFragment.this).navigate(action);
+            binding.firstnameEdittext.setText(null);
+            binding.lastnameEdittext.setText(null);
+            binding.phoneEdittext.setText(null);
         });
     }
 }
