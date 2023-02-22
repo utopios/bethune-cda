@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.cours.databinding.FragmentListContactBinding;
@@ -55,5 +56,11 @@ public class ListContactFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ArrayAdapter<Contact> contactArrayAdapter = new ArrayAdapter<Contact>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,contactService.getContacts());
         binding.listContactsView.setAdapter(contactArrayAdapter);
+        binding.listContactsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println(l + " "+i);
+            }
+        });
     }
 }
