@@ -11,17 +11,19 @@ import android.view.ViewGroup;
 
 import com.example.cours.databinding.FragmentDetailBinding;
 import com.example.cours.model.Contact;
+import com.example.cours.service.ContactService;
 
 
 public class DetailFragment extends Fragment {
 
 
 
+    private ContactService contactService;
     private Contact contact;
 
     private FragmentDetailBinding binding;
     public DetailFragment() {
-
+        contactService = new ContactService();
     }
 
 
@@ -31,7 +33,7 @@ public class DetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             DetailFragmentArgs args = DetailFragmentArgs.fromBundle(getArguments());
-            contact = new Contact(args.getFirstname(), args.getLastname(), args.getPhone());
+            contact = contactService.getContactById(args.getId());
         }
     }
 

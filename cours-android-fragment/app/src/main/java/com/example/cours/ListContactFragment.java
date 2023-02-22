@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +60,8 @@ public class ListContactFragment extends Fragment {
         binding.listContactsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println(l + " "+i);
+                ListContactFragmentDirections.ActionListToDetail action = ListContactFragmentDirections.actionListToDetail(i);
+                NavHostFragment.findNavController(ListContactFragment.this).navigate(action);
             }
         });
     }

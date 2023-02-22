@@ -30,18 +30,18 @@
 
     </fragment>
     <fragment android:id="@+id/FormFragment" android:name="com.example.cours.FormFragment" android:label="Formulaire" tools:layout="@layout/fragment_form">
-        <action android:id="@+id/action_from_to_detail" app:destination="@id/DetailFragment"></action>
         <action android:id="@+id/action_form_to_list" app:destination="@id/ListContactFragment"></action>
     </fragment>
     <fragment android:id="@+id/DetailFragment" android:name="com.example.cours.DetailFragment" android:label="Detail" tools:layout="@layout/fragment_detail">
-        <argument android:name="firstname" app:argType="string"></argument>
-        <argument android:name="lastname" app:argType="string"></argument>
-        <argument android:name="phone" app:argType="string"></argument>
+        <argument android:name="id" app:argType="integer"></argument>
+
     </fragment>
     <fragment android:id="@+id/ListContactFragment" android:name="com.example.cours.ListContactFragment" android:label="Liste contacts" tools:layout="@layout/fragment_list_contact">
         <argument android:name="firstname" app:argType="string"></argument>
         <argument android:name="lastname" app:argType="string"></argument>
         <argument android:name="phone" app:argType="string"></argument>
+        <action android:id="@+id/action_list_to_detail" app:destination="@id/DetailFragment"></action>
+
     </fragment>
     <fragment android:id="@+id/DemoFragment" android:name="com.example.cours.DemoFragment" android:label="Demo fragment" tools:layout="@layout/fragment_demo">
         <argument android:name="title" app:argType="string" android:defaultValue="toto"></argument>

@@ -17,4 +17,8 @@ public class ContactService {
     public List<Contact> getContacts() {
         return contacts;
     }
+
+    public Contact getContactById(int id) {
+        return contacts.get(id);
+    }
 }
