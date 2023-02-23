@@ -38,9 +38,9 @@ public class ListContactFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            ListContactFragmentArgs args = ListContactFragmentArgs.fromBundle(getArguments());
+            /*ListContactFragmentArgs args = ListContactFragmentArgs.fromBundle(getArguments());
             contact = new Contact(args.getFirstname(), args.getLastname(), args.getPhone());
-            contactService.add(contact);
+            contactService.add(contact);*/
         }
     }
 
@@ -55,7 +55,7 @@ public class ListContactFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        ArrayAdapter<Contact> contactArrayAdapter = new ArrayAdapter<Contact>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,contactService.getContacts());
+        ArrayAdapter<Contact> contactArrayAdapter = new ArrayAdapter<Contact>(getContext(), android.R.layout.simple_selectable_list_item,contactService.getContacts());
         binding.listContactsView.setAdapter(contactArrayAdapter);
         binding.listContactsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,5 +64,19 @@ public class ListContactFragment extends Fragment {
                 NavHostFragment.findNavController(ListContactFragment.this).navigate(action);
             }
         });
+
+
+
+        /*binding.listContactsView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });*/
     }
 }

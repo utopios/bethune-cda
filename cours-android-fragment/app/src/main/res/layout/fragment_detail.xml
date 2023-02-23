@@ -20,6 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/phone_textView"></TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Modifier" android:id="@+id/editButton"></Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Supprimer" android:id="@+id/deleteButton"></Button>
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

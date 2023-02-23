@@ -21,4 +21,11 @@ public class ContactService {
     public Contact getContactById(int id) {
         return contacts.get(id);
     }
+
+    public void update(String firstName, String lastName, String phone, int id) {
+        Contact contact = getContactById(id);
+        contact.setFirstName(firstName);
+        contact.setLastName(lastName);
+        contact.setPhone(phone);
+    }
 }

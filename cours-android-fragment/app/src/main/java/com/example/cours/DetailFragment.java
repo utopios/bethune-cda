@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class DetailFragment extends Fragment {
 
     private ContactService contactService;
     private Contact contact;
+    private int id;
 
     private FragmentDetailBinding binding;
     public DetailFragment() {
@@ -34,6 +36,7 @@ public class DetailFragment extends Fragment {
         if (getArguments() != null) {
             DetailFragmentArgs args = DetailFragmentArgs.fromBundle(getArguments());
             contact = contactService.getContactById(args.getId());
+            id = args.getId();
         }
     }
 
@@ -49,5 +52,9 @@ public class DetailFragment extends Fragment {
         binding.firstnameTextView.setText(contact.getFirstName());
         binding.lastnameTextView.setText(contact.getLastName());
         binding.phoneTextView.setText(contact.getPhone());
+        binding.editButton.setOnClickListener((e) -> {
+            DetailFragmentDirections.ActionDetailToForm action = DetailFragmentDirections.actionDetailToForm().setContactId(String.valueOf(id));
+            NavHostFragment.findNavController(DetailFragment.this).navigate(action);
+        } );
     }
 }
