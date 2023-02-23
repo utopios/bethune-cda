@@ -33,6 +33,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         phoneTextView.setText(contact.getPhone());
         itemButton.setOnClickListener((e) -> {
             System.out.println(contact.getFirstName());
+            itemButton.setText("Done");
         });
     }
 
