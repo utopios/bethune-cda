@@ -3,6 +3,7 @@ package com.example.cours.viewholder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,18 +18,22 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     private TextView firstNameTextView;
     private TextView lastNameTextView;
     private TextView phoneTextView;
+    private Button itemButton;
     public ContactViewHolder(@NonNull View itemView) {
         super(itemView);
         firstNameTextView = itemView.findViewById(R.id.firstname_textView_item);
         lastNameTextView = itemView.findViewById(R.id.lastname_textView_item);
         phoneTextView = itemView.findViewById(R.id.phone_textView_item);
-
+        itemButton = itemView.findViewById(R.id.item_button);
     }
 
     public void display(Contact contact) {
         firstNameTextView.setText(contact.getFirstName());
         lastNameTextView.setText(contact.getLastName());
         phoneTextView.setText(contact.getPhone());
+        itemButton.setOnClickListener((e) -> {
+            System.out.println(contact.getFirstName());
+        });
     }
 
     public static ContactViewHolder create(ViewGroup parent) {

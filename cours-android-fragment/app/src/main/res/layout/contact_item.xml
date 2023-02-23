@@ -11,4 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:id="@+id/phone_textView_item"></TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="Click contact" android:id="@+id/item_button"></Button>
 </LinearLayout>
