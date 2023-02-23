@@ -34,7 +34,7 @@
         <argument android:name="contactId" app:argType="string" android:defaultValue="null" app:nullable="true" ></argument>
     </fragment>
     <fragment android:id="@+id/DetailFragment" android:name="com.example.cours.DetailFragment" android:label="Detail" tools:layout="@layout/fragment_detail">
-        <action android:id="@+id/action_detail_to_form" app:destination="@id/FormFragment"></action>
+        <action android:id="@+id/action_detail_to_form" app:destination="@id/FormFragment" app:popUpTo="@id/FormFragment" app:popUpToInclusive="true"></action>
         <action android:id="@+id/action_detail_to_list" app:destination="@id/ListContactFragment"></action>
         <argument android:name="id" app:argType="integer"></argument>
 
