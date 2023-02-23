@@ -59,8 +59,9 @@ public class DetailFragment extends Fragment {
         } );
         binding.deleteButton.setOnClickListener((e) -> {
             contactService.deleteContact(id);
-            NavDirections action = DetailFragmentDirections.actionDetailToList();
-            NavHostFragment.findNavController(DetailFragment.this).navigate(action);
+            //NavDirections action = DetailFragmentDirections.actionDetailToList();
+            //NavHostFragment.findNavController(DetailFragment.this).navigate(action);
+            NavHostFragment.findNavController(DetailFragment.this).popBackStack();
         });
     }
 }
