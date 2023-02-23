@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -56,5 +57,10 @@ public class DetailFragment extends Fragment {
             DetailFragmentDirections.ActionDetailToForm action = DetailFragmentDirections.actionDetailToForm().setContactId(String.valueOf(id));
             NavHostFragment.findNavController(DetailFragment.this).navigate(action);
         } );
+        binding.deleteButton.setOnClickListener((e) -> {
+            contactService.deleteContact(id);
+            NavDirections action = DetailFragmentDirections.actionDetailToList();
+            NavHostFragment.findNavController(DetailFragment.this).navigate(action);
+        });
     }
 }
