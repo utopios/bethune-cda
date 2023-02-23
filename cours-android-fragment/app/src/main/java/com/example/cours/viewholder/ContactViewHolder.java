@@ -1,5 +1,6 @@
 package com.example.cours.viewholder;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.example.cours.R;
 import com.example.cours.model.Contact;
 
 import org.w3c.dom.Text;
+
+import java.util.function.Function;
 
 public class ContactViewHolder extends RecyclerView.ViewHolder {
     private TextView firstNameTextView;
@@ -37,14 +40,17 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
         view = itemView;
     }
 
-    public void display(Contact contact) {
+    public void display(Contact contact, Function<Void, Void> method) {
         firstNameTextView.setText(contact.getFirstName());
         lastNameTextView.setText(contact.getLastName());
         phoneTextView.setText(contact.getPhone());
         itemButton.setOnClickListener((e) -> {
             System.out.println(contact.getFirstName());
             itemButton.setText("Done");
-            NavHostFragment.findNavController(fragment).navigate(R.id.action_list_to_detail);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                method.apply(null);
+            }
+            //NavHostFragment.findNavController(fragment).navigate(R.id.action_list_to_detail);
         });
     }
 

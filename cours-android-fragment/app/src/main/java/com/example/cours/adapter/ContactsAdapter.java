@@ -29,7 +29,8 @@ public class ContactsAdapter extends ListAdapter<Contact, ContactViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         Contact contact = getItem(position);
-        holder.display(contact);
+        holder.display(contact, () -> {notifyDataSetChanged();});
+
     }
 
     public static class ContactDiff extends DiffUtil.ItemCallback<Contact> {
