@@ -30,7 +30,7 @@
 
     </fragment>
     <fragment android:id="@+id/FormFragment" android:name="com.example.cours.FormFragment" android:label="Formulaire" tools:layout="@layout/fragment_form">
-        <action android:id="@+id/action_form_to_list" app:destination="@id/ListContactFragment"></action>
+        <action android:id="@+id/action_form_to_list" app:destination="@id/ListContactRecycleFragment"></action>
         <argument android:name="contactId" app:argType="string" android:defaultValue="null" app:nullable="true" ></argument>
     </fragment>
     <fragment android:id="@+id/DetailFragment" android:name="com.example.cours.DetailFragment" android:label="Detail" tools:layout="@layout/fragment_detail">
@@ -40,6 +40,14 @@
 
     </fragment>
     <fragment android:id="@+id/ListContactFragment" android:name="com.example.cours.ListContactFragment" android:label="Liste contacts" tools:layout="@layout/fragment_list_contact">
+        <!--<argument android:name="firstname" app:argType="string"></argument>
+        <argument android:name="lastname" app:argType="string"></argument>
+        <argument android:name="phone" app:argType="string"></argument>-->
+        <action android:id="@+id/action_list_to_detail" app:destination="@id/DetailFragment"></action>
+
+    </fragment>
+
+    <fragment android:id="@+id/ListContactRecycleFragment" android:name="com.example.cours.ListContactRecycleFragment" android:label="Liste contacts" tools:layout="@layout/fragment_list_contact_recycle">
         <!--<argument android:name="firstname" app:argType="string"></argument>
         <argument android:name="lastname" app:argType="string"></argument>
         <argument android:name="phone" app:argType="string"></argument>-->

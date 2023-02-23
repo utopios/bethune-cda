@@ -1,5 +1,7 @@
 package com.example.cours.model;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 
 public class Contact implements Serializable {
@@ -41,4 +43,6 @@ public class Contact implements Serializable {
     public String toString() {
         return firstName +" "+lastName+" "+phone;
     }
+
+
 }
