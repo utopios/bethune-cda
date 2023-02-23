@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -63,6 +64,7 @@ public class ListContactRecycleFragment extends Fragment {
         contactsAdapter = new ContactsAdapter(new ContactsAdapter.ContactDiff());
         binding.recyclerListContacts.setAdapter(contactsAdapter);
         binding.recyclerListContacts.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerListContacts.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         contactsAdapter.submitList(contactService.getContacts());
     }
 }
