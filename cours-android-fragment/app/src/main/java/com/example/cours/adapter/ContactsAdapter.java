@@ -3,6 +3,7 @@ package com.example.cours.adapter;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
@@ -10,8 +11,11 @@ import com.example.cours.model.Contact;
 import com.example.cours.viewholder.ContactViewHolder;
 
 public class ContactsAdapter extends ListAdapter<Contact, ContactViewHolder> {
-
-
+    private Fragment fragment;
+    public ContactsAdapter(@NonNull DiffUtil.ItemCallback<Contact> diffCallback, Fragment fragment) {
+        this(diffCallback);
+        this.fragment = fragment;
+    }
     public ContactsAdapter(@NonNull DiffUtil.ItemCallback<Contact> diffCallback) {
         super(diffCallback);
     }
@@ -19,7 +23,7 @@ public class ContactsAdapter extends ListAdapter<Contact, ContactViewHolder> {
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return ContactViewHolder.create(parent);
+        return ContactViewHolder.create(parent, fragment);
     }
 
     @Override

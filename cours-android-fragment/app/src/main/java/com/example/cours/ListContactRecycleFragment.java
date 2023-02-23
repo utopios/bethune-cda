@@ -61,10 +61,11 @@ public class ListContactRecycleFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        contactsAdapter = new ContactsAdapter(new ContactsAdapter.ContactDiff());
+        contactsAdapter = new ContactsAdapter(new ContactsAdapter.ContactDiff(), ListContactRecycleFragment.this);
         binding.recyclerListContacts.setAdapter(contactsAdapter);
         binding.recyclerListContacts.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerListContacts.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         contactsAdapter.submitList(contactService.getContacts());
+
     }
 }
