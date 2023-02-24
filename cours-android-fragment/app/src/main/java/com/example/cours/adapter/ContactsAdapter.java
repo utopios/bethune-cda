@@ -29,7 +29,7 @@ public class ContactsAdapter extends ListAdapter<Contact, ContactViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         Contact contact = getItem(position);
-        holder.display(contact, () -> {notifyDataSetChanged();});
+        holder.display(contact, (e) -> {notifyDataSetChanged(); return null;});
 
     }
 
