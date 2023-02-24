@@ -18,5 +18,9 @@ public class TodoService {
         return  todos;
     }
 
+    public void deleteTodo(Todo todo) {
+        todos.remove(todo);
+    }
+
 
 }

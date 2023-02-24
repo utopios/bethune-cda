@@ -31,7 +31,7 @@ public class TodosAdapter extends ListAdapter<Todo, TodoViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull TodoViewHolder holder, int position) {
         Todo todo = getItem(position);
-        holder.display(todo);
+        holder.display(todo, ()-> {notifyDataSetChanged();});
     }
 
     public static class TodoDiff extends DiffUtil.ItemCallback<Todo> {
