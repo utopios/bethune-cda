@@ -9,7 +9,7 @@ public class RetrofitClient {
     private Retrofit retrofit;
 
     private RetrofitClient() {
-        retrofit = new Retrofit.Builder().baseUrl("http://localhost:8080/").addConverterFactory(GsonConverterFactory.create()).build();
+        retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080").addConverterFactory(GsonConverterFactory.create()).build();
     }
 
     public static synchronized RetrofitClient getInstance() {
