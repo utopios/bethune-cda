@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/formToDoFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="formation.java.formationanroid.views.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/homeToSecond"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="formation.java.formationanroid.views.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" >
+        <argument
+            android:name="personName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/formToDoFragment"
+        android:name="formation.java.formationanroid.FormToDoFragment"
+        android:label="fragment_form_to_do"
+        tools:layout="@layout/fragment_form_to_do" >
+        <action
+            android:id="@+id/formTodoToListTodo"
+            app:destination="@id/listToDoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listToDoFragment"
+        android:name="formation.java.formationanroid.ListToDoFragment"
+        android:label="fragment_list_to_do"
+        tools:layout="@layout/fragment_list_to_do" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="priority"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedPreferenceSubmitFragment"
+        android:name="formation.java.formationanroid.SharedPreferenceSubmitFragment"
+        android:label="fragment_shared_preference_submit"
+        tools:layout="@layout/fragment_shared_preference_submit" >
+        <action
+            android:id="@+id/action_sharedPreferenceSubmitFragment_to_sharedPreferenceReadFragment"
+            app:destination="@id/sharedPreferenceReadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedPreferenceReadFragment"
+        android:name="formation.java.formationanroid.SharedPreferenceReadFragment"
+        android:label="fragment_shared_preference_read"
+        tools:layout="@layout/fragment_shared_preference_read" />
+    <fragment
+        android:id="@+id/acceleratorFragment"
+        android:name="formation.java.formationanroid.AcceleratorFragment"
+        android:label="fragment_accelerator"
+        tools:layout="@layout/fragment_accelerator" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="formation.java.formationanroid.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" />
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="formation.java.formationanroid.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
+</navigation>

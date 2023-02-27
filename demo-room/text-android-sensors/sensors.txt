@@ -1,0 +1,41 @@
+1 -  Motion Sensors
+    - Capturer l'acceleration, la rotation  du téléphone ...
+2 -  Position Sensors
+    - Récupération de la position du téléphone.
+3 -  Environmental Sensors
+    - capteur pour mesurer la temperature
+
+
+Android nous permet d'utiliser des SDK (plusieurs classes et interfaces).
+
+Classes
+    1- SensorManager : => getSystemService(SENSOR_SERVICE)
+        - Récupérer l'instance du sensor
+        - écouter le sensor
+        - enregister des méthodes call Back sur le sensor.
+
+    2- Sensor
+        - Récupérer les informations sur le sensor(nom, type, ...).
+
+    ...
+
+Interfaces
+    SensorEventListener
+        - pour implémenter des méthodes de callback.
+
+
+Exemple d'utilisation des locations.
+     - demande de permission dans le manifest android
+     - Utilisation du package google play services.
+     - Définition du request permissions
+     - définition d'une méthode checkPermissions
+     - un client pour accéder au location (FusedLocationProviderClient)
+     - En plus on peut, à l'aide du package google play service, accéder au sensor pour vérfier si gps est actif.
+
+Autre exemple d'utilisation avec le dépot git de google https://github.com/googlemaps/android-samples
+
+
+Sensor avec intent
+- En plus des vérification des permissions, on doit renvoyer vers l'intent du sensor.
+- gérer le retour de l'intent du sensor.
+
