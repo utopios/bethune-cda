@@ -2,7 +2,9 @@ package com.example.cours;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -28,6 +30,11 @@ public class DisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Lire à partir de sharedPreferences
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("stockage_app", Context.MODE_PRIVATE);
+        String valueKey = sharedPreferences.getString("key", "default");
+
         setContentView(R.layout.activity_display);
         Intent intent = getIntent();
         contact = (Contact) intent.getSerializableExtra("contact");
