@@ -14,7 +14,15 @@ import android.view.ViewGroup;
 
 import com.example.todolistapp_android.adapter.TodosAdapter;
 import com.example.todolistapp_android.databinding.FragmentTodosBinding;
+import com.example.todolistapp_android.model.Todo;
 import com.example.todolistapp_android.service.TodoService;
+import com.example.todolistapp_android.util.RetrofitClient;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TodosFragment extends Fragment {
 
@@ -47,6 +55,18 @@ public class TodosFragment extends Fragment {
         binding.todosRecyclerview.setAdapter(todosAdapter);
         binding.todosRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.todosRecyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        todosAdapter.submitList(todoService.getTodos());
+        RetrofitClient.getInstance().getApiService().getTasks(1).enqueue(new Callback<List<Todo>>() {
+            @Override
+            public void onResponse(Call<List<Todo>> call, Response<List<Todo>> response) {
+                List<Todo> todos = response.body();
+                todosAdapter.submitList(todos);
+            }
+
+            @Override
+            public void onFailure(Call<List<Todo>> call, Throwable t) {
+
+            }
+        });
+        //todosAdapter.submitList(todoService.getTodos());
     }
 }

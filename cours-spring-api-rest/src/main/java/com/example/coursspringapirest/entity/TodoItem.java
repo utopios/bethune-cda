@@ -1,5 +1,6 @@
 package com.example.coursspringapirest.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class TodoItem {
     private String taskName;
     private boolean date;
 
+    @JsonIgnore
     @ManyToOne
     private TodoList todoList;
 }

@@ -1,8 +1,12 @@
 package com.example.todolistapp_android.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Todo {
     private int id;
+    @SerializedName("taskName")
     private String name;
+    @SerializedName("date")
     private boolean status;
 
     public Todo(int id, String name, boolean status) {
