@@ -10,7 +10,14 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import androidx.camera.core.Camera;
+import androidx.camera.core.CameraSelector;
+import androidx.camera.core.Preview;
+import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.camera.view.PreviewView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 
 
 import android.provider.MediaStore;
@@ -20,7 +27,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.common.util.concurrent.ListenableFuture;
 
+import java.util.concurrent.ExecutionException;
 
 
 public class CameraFragment extends Fragment {
@@ -28,10 +37,10 @@ public class CameraFragment extends Fragment {
 
     Button takePictureButton;
     ImageView resultImageView;
-    //PreviewView previewView;
+    PreviewView previewView;
     int CODE_RESULT = 33;
 
-    //private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
+    private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     ActivityResultLauncher launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (result) -> {
         if(result.getResultCode() == Activity.RESULT_OK) {
@@ -84,18 +93,17 @@ public class CameraFragment extends Fragment {
     }
 
 
-//    void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
-//        Preview preview = new Preview.Builder()
-//                .build();
-//
-//        CameraSelector cameraSelector = new CameraSelector.Builder()
-//                .requireLensFacing(CameraSelector.LENS_FACING_BACK)
-//                .build();
-//
-//        preview.setSurfaceProvider(previewView.getSurfaceProvider());
-//
-//        Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, preview);
-//    }
+    /*void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
+        Preview preview = new Preview.Builder()
+                .build();
+
+        CameraSelector cameraSelector = new CameraSelector.Builder()
+                .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
+                .build();
+        preview.setSurfaceProvider(previewView.getSurfaceProvider());
+
+        Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, preview);
+    }*/
 
 //    @Override
 //    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {

@@ -19,12 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/resultImageView"></ImageView>
 
-       <!-- <FrameLayout android:layout_height="wrap_content"
+       <FrameLayout android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/container">
             <androidx.camera.view.PreviewView
                 android:id="@+id/previewView"  android:layout_height="wrap_content" android:layout_width="match_parent"/>
-        </FrameLayout>-->
+        </FrameLayout>
     </LinearLayout>
 
 </FrameLayout>
